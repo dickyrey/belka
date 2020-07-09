@@ -5,6 +5,7 @@ part 'product_failure.freezed.dart';
 @freezed
 abstract class ProductFailure with _$ProductFailure {
   const factory ProductFailure.unexpected() = _Unexpected;
-  const factory ProductFailure.insufficentPermission() = _InsufficentPermission;
+  const factory ProductFailure.insufficientPermission() =
+      _InsufficentPermission;
   const factory ProductFailure.unableToUpdate() = _UnableToUpdate;
 }

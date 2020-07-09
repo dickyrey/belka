@@ -5,7 +5,7 @@ import 'product.dart';
 import 'product_failure.dart';
 
 abstract class IProductRepository {
-  Stream<Either<ProductFailure, KtList<Product>>> watchAll();
+  Stream<Either<ProductFailure, KtList<Product>>> watchAllMyProduct();
   Future<Either<ProductFailure, Unit>> create(Product product);
   Future<Either<ProductFailure, Unit>> update(Product product);
   Future<Either<ProductFailure, Unit>> delete(Product product);

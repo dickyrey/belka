@@ -102,7 +102,7 @@ class ProductFormBloc extends Bloc<ProductFormEvent, ProductFormState> {
       totalSalesChanged: (e) async* {
         yield state.copyWith(
           product: state.product
-              .copyWith(productTotalSales: ProductTotalSales(e.totalSalesStr)),
+              .copyWith(totalSales: ProductTotalSales(e.totalSalesStr)),
           saveFailureOrSuccessOption: none(),
         );
       },

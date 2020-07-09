@@ -22,7 +22,7 @@ class _$ProductTearOff {
       @required ProductPrice price,
       @required ProductPrice regularPrice,
       @required ProductPrice discountPrice,
-      @required ProductTotalSales productTotalSales,
+      @required ProductTotalSales totalSales,
       @required ProductRating rating,
       @required ListImageProduct<ImageItem> images}) {
     return _Product(
@@ -35,7 +35,7 @@ class _$ProductTearOff {
       price: price,
       regularPrice: regularPrice,
       discountPrice: discountPrice,
-      productTotalSales: productTotalSales,
+      totalSales: totalSales,
       rating: rating,
       images: images,
     );
@@ -55,7 +55,7 @@ mixin _$Product {
   ProductPrice get price;
   ProductPrice get regularPrice;
   ProductPrice get discountPrice;
-  ProductTotalSales get productTotalSales;
+  ProductTotalSales get totalSales;
   ProductRating get rating;
   ListImageProduct<ImageItem> get images;
 
@@ -75,7 +75,7 @@ abstract class $ProductCopyWith<$Res> {
       ProductPrice price,
       ProductPrice regularPrice,
       ProductPrice discountPrice,
-      ProductTotalSales productTotalSales,
+      ProductTotalSales totalSales,
       ProductRating rating,
       ListImageProduct<ImageItem> images});
 }
@@ -98,7 +98,7 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
     Object price = freezed,
     Object regularPrice = freezed,
     Object discountPrice = freezed,
-    Object productTotalSales = freezed,
+    Object totalSales = freezed,
     Object rating = freezed,
     Object images = freezed,
   }) {
@@ -120,9 +120,9 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
       discountPrice: discountPrice == freezed
           ? _value.discountPrice
           : discountPrice as ProductPrice,
-      productTotalSales: productTotalSales == freezed
-          ? _value.productTotalSales
-          : productTotalSales as ProductTotalSales,
+      totalSales: totalSales == freezed
+          ? _value.totalSales
+          : totalSales as ProductTotalSales,
       rating: rating == freezed ? _value.rating : rating as ProductRating,
       images: images == freezed
           ? _value.images
@@ -145,7 +145,7 @@ abstract class _$ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
       ProductPrice price,
       ProductPrice regularPrice,
       ProductPrice discountPrice,
-      ProductTotalSales productTotalSales,
+      ProductTotalSales totalSales,
       ProductRating rating,
       ListImageProduct<ImageItem> images});
 }
@@ -169,7 +169,7 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
     Object price = freezed,
     Object regularPrice = freezed,
     Object discountPrice = freezed,
-    Object productTotalSales = freezed,
+    Object totalSales = freezed,
     Object rating = freezed,
     Object images = freezed,
   }) {
@@ -191,9 +191,9 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
       discountPrice: discountPrice == freezed
           ? _value.discountPrice
           : discountPrice as ProductPrice,
-      productTotalSales: productTotalSales == freezed
-          ? _value.productTotalSales
-          : productTotalSales as ProductTotalSales,
+      totalSales: totalSales == freezed
+          ? _value.totalSales
+          : totalSales as ProductTotalSales,
       rating: rating == freezed ? _value.rating : rating as ProductRating,
       images: images == freezed
           ? _value.images
@@ -213,7 +213,7 @@ class _$_Product extends _Product {
       @required this.price,
       @required this.regularPrice,
       @required this.discountPrice,
-      @required this.productTotalSales,
+      @required this.totalSales,
       @required this.rating,
       @required this.images})
       : assert(id != null),
@@ -225,7 +225,7 @@ class _$_Product extends _Product {
         assert(price != null),
         assert(regularPrice != null),
         assert(discountPrice != null),
-        assert(productTotalSales != null),
+        assert(totalSales != null),
         assert(rating != null),
         assert(images != null),
         super._();
@@ -249,7 +249,7 @@ class _$_Product extends _Product {
   @override
   final ProductPrice discountPrice;
   @override
-  final ProductTotalSales productTotalSales;
+  final ProductTotalSales totalSales;
   @override
   final ProductRating rating;
   @override
@@ -257,7 +257,7 @@ class _$_Product extends _Product {
 
   @override
   String toString() {
-    return 'Product(id: $id, name: $name, description: $description, inPublish: $inPublish, inStock: $inStock, onSale: $onSale, price: $price, regularPrice: $regularPrice, discountPrice: $discountPrice, productTotalSales: $productTotalSales, rating: $rating, images: $images)';
+    return 'Product(id: $id, name: $name, description: $description, inPublish: $inPublish, inStock: $inStock, onSale: $onSale, price: $price, regularPrice: $regularPrice, discountPrice: $discountPrice, totalSales: $totalSales, rating: $rating, images: $images)';
   }
 
   @override
@@ -287,9 +287,9 @@ class _$_Product extends _Product {
             (identical(other.discountPrice, discountPrice) ||
                 const DeepCollectionEquality()
                     .equals(other.discountPrice, discountPrice)) &&
-            (identical(other.productTotalSales, productTotalSales) ||
+            (identical(other.totalSales, totalSales) ||
                 const DeepCollectionEquality()
-                    .equals(other.productTotalSales, productTotalSales)) &&
+                    .equals(other.totalSales, totalSales)) &&
             (identical(other.rating, rating) ||
                 const DeepCollectionEquality().equals(other.rating, rating)) &&
             (identical(other.images, images) ||
@@ -308,7 +308,7 @@ class _$_Product extends _Product {
       const DeepCollectionEquality().hash(price) ^
       const DeepCollectionEquality().hash(regularPrice) ^
       const DeepCollectionEquality().hash(discountPrice) ^
-      const DeepCollectionEquality().hash(productTotalSales) ^
+      const DeepCollectionEquality().hash(totalSales) ^
       const DeepCollectionEquality().hash(rating) ^
       const DeepCollectionEquality().hash(images);
 
@@ -329,7 +329,7 @@ abstract class _Product extends Product {
       @required ProductPrice price,
       @required ProductPrice regularPrice,
       @required ProductPrice discountPrice,
-      @required ProductTotalSales productTotalSales,
+      @required ProductTotalSales totalSales,
       @required ProductRating rating,
       @required ListImageProduct<ImageItem> images}) = _$_Product;
 
@@ -352,7 +352,7 @@ abstract class _Product extends Product {
   @override
   ProductPrice get discountPrice;
   @override
-  ProductTotalSales get productTotalSales;
+  ProductTotalSales get totalSales;
   @override
   ProductRating get rating;
   @override

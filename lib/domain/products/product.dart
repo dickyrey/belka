@@ -22,7 +22,7 @@ abstract class Product implements _$Product {
     @required ProductPrice price,
     @required ProductPrice regularPrice,
     @required ProductPrice discountPrice,
-    @required ProductTotalSales productTotalSales,
+    @required ProductTotalSales totalSales,
     @required ProductRating rating,
     @required ListImageProduct<ImageItem> images,
   }) = _Product;
@@ -46,7 +46,7 @@ abstract class Product implements _$Product {
         discountPrice: ProductPrice(0.0),
         regularPrice: ProductPrice(0.0),
         price: ProductPrice(0.0),
-        productTotalSales: ProductTotalSales(0),
+        totalSales: ProductTotalSales(0),
         rating: ProductRating(0.0),
         images: ListImageProduct(emptyList()),
       );
