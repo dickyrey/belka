@@ -14,12 +14,14 @@ class _$ImageItemTearOff {
 
   _ImageItem call(
       {@required UniqueId id,
-      @required ProductDescription imageName,
-      @required ImageUrl imageUrl}) {
+      @required ImageName imageName,
+      @required ImageUrl imageUrl,
+      @required bool done}) {
     return _ImageItem(
       id: id,
       imageName: imageName,
       imageUrl: imageUrl,
+      done: done,
     );
   }
 }
@@ -29,8 +31,9 @@ const $ImageItem = _$ImageItemTearOff();
 
 mixin _$ImageItem {
   UniqueId get id;
-  ProductDescription get imageName;
+  ImageName get imageName;
   ImageUrl get imageUrl;
+  bool get done;
 
   $ImageItemCopyWith<ImageItem> get copyWith;
 }
@@ -38,7 +41,7 @@ mixin _$ImageItem {
 abstract class $ImageItemCopyWith<$Res> {
   factory $ImageItemCopyWith(ImageItem value, $Res Function(ImageItem) then) =
       _$ImageItemCopyWithImpl<$Res>;
-  $Res call({UniqueId id, ProductDescription imageName, ImageUrl imageUrl});
+  $Res call({UniqueId id, ImageName imageName, ImageUrl imageUrl, bool done});
 }
 
 class _$ImageItemCopyWithImpl<$Res> implements $ImageItemCopyWith<$Res> {
@@ -53,13 +56,14 @@ class _$ImageItemCopyWithImpl<$Res> implements $ImageItemCopyWith<$Res> {
     Object id = freezed,
     Object imageName = freezed,
     Object imageUrl = freezed,
+    Object done = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as UniqueId,
-      imageName: imageName == freezed
-          ? _value.imageName
-          : imageName as ProductDescription,
+      imageName:
+          imageName == freezed ? _value.imageName : imageName as ImageName,
       imageUrl: imageUrl == freezed ? _value.imageUrl : imageUrl as ImageUrl,
+      done: done == freezed ? _value.done : done as bool,
     ));
   }
 }
@@ -69,7 +73,7 @@ abstract class _$ImageItemCopyWith<$Res> implements $ImageItemCopyWith<$Res> {
           _ImageItem value, $Res Function(_ImageItem) then) =
       __$ImageItemCopyWithImpl<$Res>;
   @override
-  $Res call({UniqueId id, ProductDescription imageName, ImageUrl imageUrl});
+  $Res call({UniqueId id, ImageName imageName, ImageUrl imageUrl, bool done});
 }
 
 class __$ImageItemCopyWithImpl<$Res> extends _$ImageItemCopyWithImpl<$Res>
@@ -85,35 +89,42 @@ class __$ImageItemCopyWithImpl<$Res> extends _$ImageItemCopyWithImpl<$Res>
     Object id = freezed,
     Object imageName = freezed,
     Object imageUrl = freezed,
+    Object done = freezed,
   }) {
     return _then(_ImageItem(
       id: id == freezed ? _value.id : id as UniqueId,
-      imageName: imageName == freezed
-          ? _value.imageName
-          : imageName as ProductDescription,
+      imageName:
+          imageName == freezed ? _value.imageName : imageName as ImageName,
       imageUrl: imageUrl == freezed ? _value.imageUrl : imageUrl as ImageUrl,
+      done: done == freezed ? _value.done : done as bool,
     ));
   }
 }
 
 class _$_ImageItem extends _ImageItem {
   const _$_ImageItem(
-      {@required this.id, @required this.imageName, @required this.imageUrl})
+      {@required this.id,
+      @required this.imageName,
+      @required this.imageUrl,
+      @required this.done})
       : assert(id != null),
         assert(imageName != null),
         assert(imageUrl != null),
+        assert(done != null),
         super._();
 
   @override
   final UniqueId id;
   @override
-  final ProductDescription imageName;
+  final ImageName imageName;
   @override
   final ImageUrl imageUrl;
+  @override
+  final bool done;
 
   @override
   String toString() {
-    return 'ImageItem(id: $id, imageName: $imageName, imageUrl: $imageUrl)';
+    return 'ImageItem(id: $id, imageName: $imageName, imageUrl: $imageUrl, done: $done)';
   }
 
   @override
@@ -127,7 +138,9 @@ class _$_ImageItem extends _ImageItem {
                     .equals(other.imageName, imageName)) &&
             (identical(other.imageUrl, imageUrl) ||
                 const DeepCollectionEquality()
-                    .equals(other.imageUrl, imageUrl)));
+                    .equals(other.imageUrl, imageUrl)) &&
+            (identical(other.done, done) ||
+                const DeepCollectionEquality().equals(other.done, done)));
   }
 
   @override
@@ -135,7 +148,8 @@ class _$_ImageItem extends _ImageItem {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(imageName) ^
-      const DeepCollectionEquality().hash(imageUrl);
+      const DeepCollectionEquality().hash(imageUrl) ^
+      const DeepCollectionEquality().hash(done);
 
   @override
   _$ImageItemCopyWith<_ImageItem> get copyWith =>
@@ -146,15 +160,18 @@ abstract class _ImageItem extends ImageItem {
   const _ImageItem._() : super._();
   const factory _ImageItem(
       {@required UniqueId id,
-      @required ProductDescription imageName,
-      @required ImageUrl imageUrl}) = _$_ImageItem;
+      @required ImageName imageName,
+      @required ImageUrl imageUrl,
+      @required bool done}) = _$_ImageItem;
 
   @override
   UniqueId get id;
   @override
-  ProductDescription get imageName;
+  ImageName get imageName;
   @override
   ImageUrl get imageUrl;
+  @override
+  bool get done;
   @override
   _$ImageItemCopyWith<_ImageItem> get copyWith;
 }

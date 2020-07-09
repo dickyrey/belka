@@ -48,6 +48,17 @@ class ProductPrice extends ValueObject<double> {
   const ProductPrice._(this.value);
 }
 
+class ProductRating extends ValueObject<double> {
+  @override
+  final Either<ValueFailure<double>, double> value;
+
+  factory ProductRating(double input) {
+    assert(input != null);
+    return ProductRating._(validateDoubleNotEmpty(input));
+  }
+  const ProductRating._(this.value);
+}
+
 class ProductTotalSales extends ValueObject<int> {
   @override
   final Either<ValueFailure<int>, int> value;
@@ -108,6 +119,21 @@ class ProductOnSale extends ValueObject<String> {
   }
 
   const ProductOnSale._(this.value);
+}
+
+class ImageName extends ValueObject<String> {
+  @override
+  final Either<ValueFailure<String>, String> value;
+
+  static const maxLength = 50;
+
+  factory ImageName(String input) {
+    assert(input != null);
+    return ImageName._(
+      validateMaxStringLength(input, maxLength).flatMap(validateStringNotEmpty),
+    );
+  }
+  const ImageName._(this.value);
 }
 
 class ImageUrl extends ValueObject<String> {

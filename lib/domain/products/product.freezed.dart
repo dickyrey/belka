@@ -23,6 +23,7 @@ class _$ProductTearOff {
       @required ProductPrice regularPrice,
       @required ProductPrice discountPrice,
       @required ProductTotalSales productTotalSales,
+      @required ProductRating rating,
       @required ListImageProduct<ImageItem> images}) {
     return _Product(
       id: id,
@@ -35,6 +36,7 @@ class _$ProductTearOff {
       regularPrice: regularPrice,
       discountPrice: discountPrice,
       productTotalSales: productTotalSales,
+      rating: rating,
       images: images,
     );
   }
@@ -54,6 +56,7 @@ mixin _$Product {
   ProductPrice get regularPrice;
   ProductPrice get discountPrice;
   ProductTotalSales get productTotalSales;
+  ProductRating get rating;
   ListImageProduct<ImageItem> get images;
 
   $ProductCopyWith<Product> get copyWith;
@@ -73,6 +76,7 @@ abstract class $ProductCopyWith<$Res> {
       ProductPrice regularPrice,
       ProductPrice discountPrice,
       ProductTotalSales productTotalSales,
+      ProductRating rating,
       ListImageProduct<ImageItem> images});
 }
 
@@ -95,6 +99,7 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
     Object regularPrice = freezed,
     Object discountPrice = freezed,
     Object productTotalSales = freezed,
+    Object rating = freezed,
     Object images = freezed,
   }) {
     return _then(_value.copyWith(
@@ -118,6 +123,7 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
       productTotalSales: productTotalSales == freezed
           ? _value.productTotalSales
           : productTotalSales as ProductTotalSales,
+      rating: rating == freezed ? _value.rating : rating as ProductRating,
       images: images == freezed
           ? _value.images
           : images as ListImageProduct<ImageItem>,
@@ -140,6 +146,7 @@ abstract class _$ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
       ProductPrice regularPrice,
       ProductPrice discountPrice,
       ProductTotalSales productTotalSales,
+      ProductRating rating,
       ListImageProduct<ImageItem> images});
 }
 
@@ -163,6 +170,7 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
     Object regularPrice = freezed,
     Object discountPrice = freezed,
     Object productTotalSales = freezed,
+    Object rating = freezed,
     Object images = freezed,
   }) {
     return _then(_Product(
@@ -186,6 +194,7 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
       productTotalSales: productTotalSales == freezed
           ? _value.productTotalSales
           : productTotalSales as ProductTotalSales,
+      rating: rating == freezed ? _value.rating : rating as ProductRating,
       images: images == freezed
           ? _value.images
           : images as ListImageProduct<ImageItem>,
@@ -205,6 +214,7 @@ class _$_Product extends _Product {
       @required this.regularPrice,
       @required this.discountPrice,
       @required this.productTotalSales,
+      @required this.rating,
       @required this.images})
       : assert(id != null),
         assert(name != null),
@@ -216,6 +226,7 @@ class _$_Product extends _Product {
         assert(regularPrice != null),
         assert(discountPrice != null),
         assert(productTotalSales != null),
+        assert(rating != null),
         assert(images != null),
         super._();
 
@@ -240,11 +251,13 @@ class _$_Product extends _Product {
   @override
   final ProductTotalSales productTotalSales;
   @override
+  final ProductRating rating;
+  @override
   final ListImageProduct<ImageItem> images;
 
   @override
   String toString() {
-    return 'Product(id: $id, name: $name, description: $description, inPublish: $inPublish, inStock: $inStock, onSale: $onSale, price: $price, regularPrice: $regularPrice, discountPrice: $discountPrice, productTotalSales: $productTotalSales, images: $images)';
+    return 'Product(id: $id, name: $name, description: $description, inPublish: $inPublish, inStock: $inStock, onSale: $onSale, price: $price, regularPrice: $regularPrice, discountPrice: $discountPrice, productTotalSales: $productTotalSales, rating: $rating, images: $images)';
   }
 
   @override
@@ -277,6 +290,8 @@ class _$_Product extends _Product {
             (identical(other.productTotalSales, productTotalSales) ||
                 const DeepCollectionEquality()
                     .equals(other.productTotalSales, productTotalSales)) &&
+            (identical(other.rating, rating) ||
+                const DeepCollectionEquality().equals(other.rating, rating)) &&
             (identical(other.images, images) ||
                 const DeepCollectionEquality().equals(other.images, images)));
   }
@@ -294,6 +309,7 @@ class _$_Product extends _Product {
       const DeepCollectionEquality().hash(regularPrice) ^
       const DeepCollectionEquality().hash(discountPrice) ^
       const DeepCollectionEquality().hash(productTotalSales) ^
+      const DeepCollectionEquality().hash(rating) ^
       const DeepCollectionEquality().hash(images);
 
   @override
@@ -314,6 +330,7 @@ abstract class _Product extends Product {
       @required ProductPrice regularPrice,
       @required ProductPrice discountPrice,
       @required ProductTotalSales productTotalSales,
+      @required ProductRating rating,
       @required ListImageProduct<ImageItem> images}) = _$_Product;
 
   @override
@@ -336,6 +353,8 @@ abstract class _Product extends Product {
   ProductPrice get discountPrice;
   @override
   ProductTotalSales get productTotalSales;
+  @override
+  ProductRating get rating;
   @override
   ListImageProduct<ImageItem> get images;
   @override
