@@ -11,6 +11,7 @@ import 'package:injectable/injectable.dart';
 import 'package:kt_dart/kt.dart';
 import 'package:rxdart/rxdart.dart';
 
+@prod
 @LazySingleton(as: IProductRepository)
 class ProductRepository implements IProductRepository {
   final Firestore _firestore;
@@ -20,7 +21,7 @@ class ProductRepository implements IProductRepository {
   @override
   Stream<Either<ProductFailure, KtList<Product>>> watchAllMyProduct() async* {
     final userDoc = await _firestore.userDocument();
-    yield* userDoc.noteCollection
+    yield* userDoc.productCollection
         .orderBy('serverTimeStamp', descending: true)
         .snapshots()
         .map(
@@ -45,7 +46,7 @@ class ProductRepository implements IProductRepository {
       final userDoc = await _firestore.userDocument();
       final productDto = ProductDto.fromDomain(product);
 
-      await userDoc.noteCollection
+      await userDoc.productCollection
           .document(productDto.id)
           .setData(productDto.toJson());
 
@@ -65,9 +66,9 @@ class ProductRepository implements IProductRepository {
       final userDoc = await _firestore.userDocument();
       final productDto = ProductDto.fromDomain(product);
 
-      await userDoc.noteCollection
+      await userDoc.productCollection
           .document(productDto.id)
-          .setData(productDto.toJson());
+          .updateData(productDto.toJson());
       return right(unit);
     } on PlatformException catch (e) {
       if (e.message.contains('PERMISSION_DENIED')) {
@@ -86,7 +87,7 @@ class ProductRepository implements IProductRepository {
       final userDoc = await _firestore.userDocument();
       final productId = product.id.getOrCrash();
 
-      await userDoc.noteCollection.document(productId).delete();
+      await userDoc.productCollection.document(productId).delete();
       return right(unit);
     } on PlatformException catch (e) {
       if (e.message.contains('PERMISSION_DENIED')) {

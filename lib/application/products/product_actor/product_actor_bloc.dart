@@ -5,6 +5,7 @@ import 'package:belka/domain/products/product.dart';
 import 'package:belka/domain/products/product_failure.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 
 part 'product_actor_event.dart';
@@ -12,6 +13,7 @@ part 'product_actor_state.dart';
 
 part 'product_actor_bloc.freezed.dart';
 
+@injectable
 class ProductActorBloc extends Bloc<ProductActorEvent, ProductActorState> {
   final IProductRepository _productRepository;
 

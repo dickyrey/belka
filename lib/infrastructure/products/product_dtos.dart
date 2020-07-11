@@ -11,61 +11,18 @@ part 'product_dtos.g.dart';
 
 @freezed
 abstract class ProductDto implements _$ProductDto {
-  const ProductDto._();
-  const factory ProductDto(
-          {@JsonKey(ignore: true) String id,
-          @required String name,
-          @required String description,
-          @required String inPublish,
-          @required String inStock,
-          @required String onSale,
-          @required double price,
-          @required double regularPrice,
-          @required double discountPrice,
-          @required double rating,
-          @required int totalSales,
-          @required List<ImageItemDto> images,
-          @required @ServerTimestampConverter() FieldValue serverTimeStamp}) =
-      _ProductDto;
+  // const ProductDto._();
+  const factory ProductDto({
+    @JsonKey(ignore: true) String id,
+    @required String name,
+    @required @ServerTimestampConverter() FieldValue serverTimeStamp,
+  }) = _ProductDto;
 
   factory ProductDto.fromDomain(Product product) {
     return ProductDto(
       id: product.id.getOrCrash(),
       name: product.name.getOrCrash(),
-      description: product.description.getOrCrash(),
-      inPublish: product.inPublish.getOrCrash(),
-      inStock: product.inStock.getOrCrash(),
-      onSale: product.onSale.getOrCrash(),
-      price: product.price.getOrCrash(),
-      regularPrice: product.regularPrice.getOrCrash(),
-      discountPrice: product.discountPrice.getOrCrash(),
-      rating: product.rating.getOrCrash(),
-      totalSales: product.totalSales.getOrCrash(),
-      images: product.images
-          .getOrCrash()
-          .map(
-            (imageItem) => ImageItemDto.fromDomain(imageItem),
-          )
-          .asList(),
       serverTimeStamp: FieldValue.serverTimestamp(),
-    );
-  }
-
-  Product toDomain() {
-    return Product(
-      id: UniqueId.fromUniqueString(id),
-      name: ProductName(name),
-      description: ProductDescription(description),
-      inPublish: ProductInPublish(inPublish),
-      inStock: ProductInStock(inStock),
-      onSale: ProductOnSale(onSale),
-      price: ProductPrice(price),
-      regularPrice: ProductPrice(regularPrice),
-      discountPrice: ProductPrice(discountPrice),
-      totalSales: ProductTotalSales(totalSales),
-      rating: ProductRating(rating),
-      images: ListImageProduct(
-          images.map((dto) => dto.toDomain()).toImmutableList()),
     );
   }
 
@@ -87,6 +44,15 @@ class ServerTimestampConverter implements JsonConverter<FieldValue, Object> {
   @override
   Object toJson(FieldValue fieldValue) {
     return fieldValue;
+  }
+}
+
+extension ProductDtoX on ProductDto {
+  Product toDomain() {
+    return Product(
+      id: UniqueId.fromUniqueString(id),
+      name: ProductName(name),
+    );
   }
 }
 

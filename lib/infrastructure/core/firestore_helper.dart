@@ -1,7 +1,10 @@
-import 'package:belka/domain/auth/i_auth_facade.dart';
-import 'package:belka/domain/core/errors.dart';
-import 'package:belka/presentation/injection.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+
+import '../../domain/auth/i_auth_facade.dart';
+import '../../domain/core/errors.dart';
+import '../../presentation/injection.dart';
+
+export 'package:cloud_firestore/cloud_firestore.dart';
 
 extension FirestoreX on Firestore {
   Future<DocumentReference> userDocument() async {
@@ -14,5 +17,5 @@ extension FirestoreX on Firestore {
 }
 
 extension DocumentReferenceX on DocumentReference {
-  CollectionReference get noteCollection => collection('products');
+  CollectionReference get productCollection => collection('products');
 }

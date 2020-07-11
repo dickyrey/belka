@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:belka/domain/auth/i_auth_facade.dart';
+import 'package:belka/domain/auth/user.dart';
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -28,7 +29,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         final userOption = await _authFacade.getSignedInUser();
         yield userOption.fold(
           () => const AuthState.unauthenticated(),
-          (_) => const AuthState.authenticated(),
+          (user) => AuthState.authenticated(user),
         );
       },
       signedOut: (e) async* {

@@ -6,6 +6,7 @@ import 'package:belka/domain/products/product_failure.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 import 'package:kt_dart/kt.dart';
 
 part 'product_watcher_event.dart';
@@ -13,6 +14,7 @@ part 'product_watcher_state.dart';
 
 part 'product_watcher_bloc.freezed.dart';
 
+@injectable
 class ProductWatcherBloc
     extends Bloc<ProductWatcherEvent, ProductWatcherState> {
   final IProductRepository _productRepository;

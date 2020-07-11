@@ -104,7 +104,8 @@ class __$ImageItemPrimitiveCopyWithImpl<$Res>
   }
 }
 
-class _$_ImageItemPrimitive extends _ImageItemPrimitive {
+class _$_ImageItemPrimitive extends _ImageItemPrimitive
+    with DiagnosticableTreeMixin {
   const _$_ImageItemPrimitive(
       {@required this.id,
       @required this.name,
@@ -126,8 +127,19 @@ class _$_ImageItemPrimitive extends _ImageItemPrimitive {
   final bool done;
 
   @override
-  String toString() {
+  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
     return 'ImageItemPrimitive(id: $id, name: $name, url: $url, done: $done)';
+  }
+
+  @override
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
+    super.debugFillProperties(properties);
+    properties
+      ..add(DiagnosticsProperty('type', 'ImageItemPrimitive'))
+      ..add(DiagnosticsProperty('id', id))
+      ..add(DiagnosticsProperty('name', name))
+      ..add(DiagnosticsProperty('url', url))
+      ..add(DiagnosticsProperty('done', done));
   }
 
   @override

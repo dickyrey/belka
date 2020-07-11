@@ -15,16 +15,18 @@ import '../../domain/auth/value_objects.dart';
 class FirebaseAuthFacade implements IAuthFacade {
   final FirebaseAuth _firebaseAuth;
   final GoogleSignIn _googleSignIn;
+  final FirebaseUserMapper _firebaseUserMapper;
 
   FirebaseAuthFacade(
     this._firebaseAuth,
     this._googleSignIn,
+    this._firebaseUserMapper,
   );
 
   @override
   Future<Option<User>> getSignedInUser() => _firebaseAuth
       .currentUser()
-      .then((firebaseUser) => optionOf(firebaseUser?.toDomain()));
+      .then((u) => optionOf(_firebaseUserMapper.toDomain(u)));
 
   @override
   Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword({
