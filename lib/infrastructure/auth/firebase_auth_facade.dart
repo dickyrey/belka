@@ -1,3 +1,4 @@
+import 'package:belka/infrastructure/core/firestore_helper.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
@@ -16,11 +17,13 @@ class FirebaseAuthFacade implements IAuthFacade {
   final FirebaseAuth _firebaseAuth;
   final GoogleSignIn _googleSignIn;
   final FirebaseUserMapper _firebaseUserMapper;
+  final Firestore _firestore;
 
   FirebaseAuthFacade(
     this._firebaseAuth,
     this._googleSignIn,
     this._firebaseUserMapper,
+    this._firestore,
   );
 
   @override
@@ -32,15 +35,22 @@ class FirebaseAuthFacade implements IAuthFacade {
   Future<Either<AuthFailure, Unit>> registerWithEmailAndPassword({
     @required EmailAddress emailAddress,
     @required Password password,
+    @required Username username,
   }) async {
     final emailAddressStr = emailAddress.getOrCrash();
     final passwordStr = password.getOrCrash();
-
+    final usernameStr = username.getOrCrash();
+    final userDoc = await _firestore.userDocument();
     try {
-      await _firebaseAuth.createUserWithEmailAndPassword(
-        email: emailAddressStr,
-        password: passwordStr,
-      );
+      await _firebaseAuth
+          .createUserWithEmailAndPassword(
+            email: emailAddressStr,
+            password: passwordStr,
+          )
+          .then((value) => userDoc.setData({
+                "username": usernameStr,
+                "email": emailAddressStr,
+              }));
       return right(unit);
     } on PlatformException catch (e) {
       if (e.code == 'ERROR_EMAIL_ALREADY_IN_USE') {

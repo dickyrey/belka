@@ -1,17 +1,17 @@
-import 'package:belka/application/products/product_form/product_form_bloc.dart';
-import 'package:belka/domain/products/product.dart';
-import 'package:belka/presentation/injection.dart';
-import 'package:belka/presentation/page/products/product_form/widgets/name_field_widget.dart';
-import 'package:belka/presentation/routes/router.gr.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:dartz/dartz.dart';
-import 'package:flushbar/flushbar.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../application/products/product_form/product_form_bloc.dart';
+import '../../../../domain/products/product.dart';
+import '../../../injection.dart';
+import '../../../routes/router.gr.dart';
 import 'misc/image_item_presentation_classes.dart';
+import 'widgets/name_field_widget.dart';
 
 class ProductFormPage extends HookWidget {
   final Product product;
@@ -48,8 +48,8 @@ class ProductFormPage extends HookWidget {
                   );
                 },
                 (_) => {
-                  Router.navigator.popUntil(
-                    (route) => route.settings.name == Router.homePage,
+                  ExtendedNavigator.of(context).popUntil(
+                    (route) => route.settings.name == Routes.homePage,
                   )
                 },
               );

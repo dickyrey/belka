@@ -12,7 +12,7 @@ class FirebaseUserMapper {
         ? null
         : User(
             id: UniqueId.fromUniqueString(_.uid),
-            name: StringSingleLine(_.displayName ?? _.email.split('@').first),
+            username: Username(_.displayName ?? _.email.split('@').first),
             emailAddress: EmailAddress(_.email),
           );
   }

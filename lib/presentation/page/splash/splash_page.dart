@@ -1,9 +1,10 @@
-import 'package:belka/presentation/page/splash/widgets/splash_background_widget.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../application/auth/auth_bloc.dart';
 import '../../routes/router.gr.dart';
+import 'widgets/splash_background_widget.dart';
 
 class SplashPage extends StatelessWidget {
   @override
@@ -13,12 +14,14 @@ class SplashPage extends StatelessWidget {
           state.map(
             initial: (_) {},
             authenticated: (_) {
-              Router.navigator.pushReplacementNamed(Router.homePage);
-              print('Login Successfully');
+              /// print('[Login Successfully]');
+              ExtendedNavigator.of(context)
+                  .pushReplacementNamed(Routes.homePage);
             },
             unauthenticated: (_) {
-              Router.navigator.pushReplacementNamed(Router.signInPage);
-              print('Need Login first');
+              /// print('[Need Login first]');
+              ExtendedNavigator.of(context)
+                  .pushReplacementNamed(Routes.signInPage);
             },
           );
         },

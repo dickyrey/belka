@@ -14,7 +14,6 @@ class EmailAddress extends ValueObject<String> {
       validateEmailAddress(input),
     );
   }
-
   const EmailAddress._(this.value);
 }
 
@@ -28,6 +27,18 @@ class Password extends ValueObject<String> {
       validatePassword(input),
     );
   }
-
   const Password._(this.value);
+}
+
+class Username extends ValueObject<String> {
+  @override
+  final Either<ValueFailure<String>, String> value;
+
+  factory Username(String input) {
+    assert(input != null);
+    return Username._(
+      validateStringNotEmpty(input),
+    );
+  }
+  const Username._(this.value);
 }

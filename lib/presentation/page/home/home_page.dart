@@ -1,29 +1,32 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:belka/application/auth/auth_bloc.dart';
-import 'package:belka/application/products/product_actor/product_actor_bloc.dart';
-import 'package:belka/application/products/product_watcher/product_watcher_bloc.dart';
-import 'package:belka/presentation/injection.dart';
-import 'package:belka/presentation/page/home/widgets/product_body_widget.dart';
-import 'package:belka/presentation/routes/router.gr.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
+import '../../../application/auth/auth_bloc.dart';
+import '../../../application/products/product_actor/product_actor_bloc.dart';
+import '../../../application/products/product_watcher/product_watcher_bloc.dart';
+import '../../injection.dart';
+import '../../routes/router.gr.dart';
+import 'widgets/product_body_widget.dart';
+
 class HomePage extends HookWidget implements AutoRouteWrapper {
   @override
-  Widget get wrappedRoute => MultiBlocProvider(
-        providers: [
-          BlocProvider(
-            create: (context) => getIt<ProductWatcherBloc>()
-              ..add(const ProductWatcherEvent.watchAllStarted()),
-          ),
-          BlocProvider<ProductActorBloc>(
-            create: (context) => getIt<ProductActorBloc>(),
-          )
-        ],
-        child: this,
-      );
+  Widget wrappedRoute(BuildContext context) {
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => getIt<ProductWatcherBloc>()
+            ..add(const ProductWatcherEvent.watchAllStarted()),
+        ),
+        BlocProvider<ProductActorBloc>(
+          create: (context) => getIt<ProductActorBloc>(),
+        )
+      ],
+      child: this,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,8 +35,10 @@ class HomePage extends HookWidget implements AutoRouteWrapper {
         BlocListener<AuthBloc, AuthState>(
           listener: (context, state) {
             state.maybeMap(
-              unauthenticated: (_) =>
-                  Router.navigator.pushReplacementNamed(Router.signInPage),
+              /// Navigate to product [SignIn] UI
+              /// When user isn't logged
+              unauthenticated: (_) => ExtendedNavigator.of(context)
+                  .pushReplacementNamed(Routes.signInPage),
               orElse: () {},
             );
           },
@@ -42,6 +47,7 @@ class HomePage extends HookWidget implements AutoRouteWrapper {
           listener: (context, state) {
             state.maybeMap(
               deleteFailure: (state) {
+                /// Show Error [Message] Failure
                 FlushbarHelper.createError(
                   duration: const Duration(seconds: 5),
                   message: state.productFailure.map(
@@ -72,8 +78,9 @@ class HomePage extends HookWidget implements AutoRouteWrapper {
         body: ProductBodyWidget(),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            Router.navigator.pushNamed(
-              Router.productFormPage,
+            /// Navigate to product [FORM PAGE] UI
+            ExtendedNavigator.of(context).pushNamed(
+              Routes.productFormPage,
               arguments: ProductFormPageArguments(product: null),
             );
           },

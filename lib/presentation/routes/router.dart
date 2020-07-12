@@ -6,14 +6,14 @@ import '../page/home/home_page.dart';
 import '../page/sign_in/sign_in_page.dart';
 import '../page/splash/splash_page.dart';
 
-@MaterialAutoRouter()
-class $Router {
-  @initial
-  SplashPage splashPage;
-  SignInPage signInPage;
-  @MaterialRoute(fullscreenDialog: true)
-  SignUpPage signUpPage;
-  HomePage homePage;
-  @MaterialRoute(fullscreenDialog: true)
-  ProductFormPage productFormPage;
-}
+@MaterialAutoRouter(
+  generateNavigationHelperExtension: true,
+  routes: <AutoRoute>[
+    MaterialRoute(page: SplashPage, initial: true),
+    MaterialRoute(page: SignInPage),
+    MaterialRoute(page: SignUpPage, fullscreenDialog: true),
+    MaterialRoute(page: HomePage),
+    MaterialRoute(page: ProductFormPage, fullscreenDialog: true),
+  ],
+)
+class $Router {}

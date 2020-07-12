@@ -1,10 +1,12 @@
-import 'package:belka/application/auth/auth_bloc.dart';
-import 'package:belka/application/auth/sign_in_form/sign_in_form_bloc.dart';
-import 'package:belka/presentation/routes/router.gr.dart';
-import 'package:belka/presentation/theme/colors.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../application/auth/auth_bloc.dart';
+import '../../../../application/auth/sign_in_form/sign_in_form_bloc.dart';
+import '../../../routes/router.gr.dart';
+import '../../../theme/colors.dart';
 
 class SignInForm extends StatelessWidget {
   const SignInForm({Key key}) : super(key: key);
@@ -16,6 +18,7 @@ class SignInForm extends StatelessWidget {
           () {},
           (either) => either.fold(
             (failure) {
+              /// Show Error [Message] Failure
               FlushbarHelper.createError(
                 message: failure.map(
                   cancelledByUser: (_) => 'Cancelled',
@@ -27,7 +30,9 @@ class SignInForm extends StatelessWidget {
               ).show(context);
             },
             (_) {
-              Router.navigator.pushReplacementNamed(Router.homePage);
+              /// Navigate to [HomePage] UI
+              ExtendedNavigator.of(context)
+                  .pushReplacementNamed(Routes.homePage);
               context
                   .bloc<AuthBloc>()
                   .add(const AuthEvent.authCheckRequested());
@@ -198,7 +203,8 @@ class SignInForm extends StatelessWidget {
                       GestureDetector(
                         onTap: () {
                           /// Navigate to [Sign Up] UI
-                          Router.navigator.pushNamed(Router.signUpPage);
+                          ExtendedNavigator.of(context)
+                              .pushNamed(Routes.signUpPage);
                         },
                         child: const Text(
                           "  DAFTAR",

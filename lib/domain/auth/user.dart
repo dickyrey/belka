@@ -12,13 +12,13 @@ abstract class User with _$User {
   const factory User({
     @required UniqueId id,
     @required EmailAddress emailAddress,
-    @required StringSingleLine name,
+    @required Username username,
   }) = _User;
 }
 
 extension UserX on User {
   Option<ValueFailure<dynamic>> get failureOption {
-    return name.failureOrUnit
+    return username.failureOrUnit
         .andThen(emailAddress.failureOrUnit)
         .fold((l) => some(l), (r) => none());
   }

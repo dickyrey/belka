@@ -32,6 +32,7 @@ void $initGetIt(GetIt g, {String environment}) {
         g<FirebaseAuth>(),
         g<GoogleSignIn>(),
         g<FirebaseUserMapper>(),
+        g<Firestore>(),
       ));
   g.registerFactory<ProductActorBloc>(
       () => ProductActorBloc(g<IProductRepository>()));

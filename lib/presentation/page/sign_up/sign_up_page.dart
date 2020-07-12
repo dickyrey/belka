@@ -1,11 +1,11 @@
-import 'package:belka/presentation/page/sign_up/widgets/sign_up_form.dart';
-import 'package:belka/presentation/routes/router.gr.dart';
-import 'package:belka/presentation/theme/colors.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../application/auth/sign_in_form/sign_in_form_bloc.dart';
 import '../../injection.dart';
+import '../../theme/colors.dart';
+import 'widgets/sign_up_form.dart';
 
 class SignUpPage extends StatelessWidget {
   @override
@@ -16,7 +16,7 @@ class SignUpPage extends StatelessWidget {
         leading: IconButton(
             icon: Icon(Icons.arrow_back_ios, color: kBlackColor),
             onPressed: () {
-              Router.navigator.pop();
+              ExtendedNavigator.of(context).pop();
             }),
         backgroundColor: Colors.white.withOpacity(.0),
         elevation: 0.0,
