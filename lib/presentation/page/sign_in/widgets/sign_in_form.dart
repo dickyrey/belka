@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rounded_loading_button/rounded_loading_button.dart';
 
 import '../../../../application/auth/auth_bloc.dart';
 import '../../../../application/auth/sign_in_form/sign_in_form_bloc.dart';
@@ -12,6 +13,8 @@ class SignInForm extends StatelessWidget {
   const SignInForm({Key key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final RoundedLoadingButtonController _btnController =
+        new RoundedLoadingButtonController();
     return BlocConsumer<SignInFormBloc, SignInFormState>(
       listener: (context, state) {
         state.authFailureOrSuccessOption.fold(
@@ -157,34 +160,60 @@ class SignInForm extends StatelessWidget {
                   const SizedBox(height: 30.0),
 
                   /// [Sign In] button Widget
-                  SizedBox(
-                    width: double.infinity,
-                    height: 50.0,
-                    child: RaisedButton(
-                      onPressed: () {
+                  RoundedLoadingButton(
+                    duration: const Duration(seconds: 2),
+                    color: kRedColor,
+                    controller: _btnController,
+                    onPressed: () {
+                      if (state.isSubmitting == true) {
                         context.bloc<SignInFormBloc>().add(const SignInFormEvent
                             .signInWithEmailAndPasswordPressed());
-                        //Todo: Register function
-                        /*
+                        _btnController.success();
+                      } else {
                         context.bloc<SignInFormBloc>().add(const SignInFormEvent
-                        .registerWithEmailAndPasswordPressed());
-                        */
-                      },
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15.0),
-                      ),
-                      child: const Text(
-                        "LOGIN",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 15.0,
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: 2.0,
-                        ),
+                            .signInWithEmailAndPasswordPressed());
+                        _btnController.reset();
+                      }
+                    },
+                    child: const Text(
+                      "LOGIN",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 15.0,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        letterSpacing: 2.0,
                       ),
                     ),
                   ),
+                  // SizedBox(
+                  //   width: double.infinity,
+                  //   height: 50.0,
+                  //   child: RaisedButton(
+                  //     onPressed: () {
+                  //       context.bloc<SignInFormBloc>().add(const SignInFormEvent
+                  //           .signInWithEmailAndPasswordPressed());
+                  //       //Todo: Register function
+                  //       /*
+                  //       context.bloc<SignInFormBloc>().add(const SignInFormEvent
+                  //       .registerWithEmailAndPasswordPressed());
+                  //       */
+                  //     },
+                  //     shape: RoundedRectangleBorder(
+                  //       borderRadius: BorderRadius.circular(15.0),
+                  //     ),
+                  //     child: const Text(
+                  //       "LOGIN",
+                  //       textAlign: TextAlign.center,
+                  //       style: TextStyle(
+                  //         fontSize: 15.0,
+                  //         color: Colors.white,
+                  //         fontWeight: FontWeight.bold,
+                  //         letterSpacing: 2.0,
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
 
                   /// [Button] for navigate to [SIGN UP] UI.
                   const SizedBox(height: 15.0),
@@ -204,7 +233,7 @@ class SignInForm extends StatelessWidget {
                         onTap: () {
                           /// Navigate to [Sign Up] UI
                           ExtendedNavigator.of(context)
-                              .pushNamed(Routes.signUpPage);
+                              .pushReplacementNamed(Routes.signUpPage);
                         },
                         child: const Text(
                           "  DAFTAR",
@@ -218,6 +247,7 @@ class SignInForm extends StatelessWidget {
                       ),
                     ],
                   ),
+                  const SizedBox(height: 20.0),
                 ],
               ),
             ),

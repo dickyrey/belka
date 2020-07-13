@@ -30,6 +30,12 @@ class _$SignUpFormEventTearOff {
     );
   }
 
+  AgreeChanged agreeChanged(bool isAgree) {
+    return AgreeChanged(
+      isAgree,
+    );
+  }
+
   RegisterWithEmailAndPasswordPressed registerWithEmailAndPasswordPressed() {
     return const RegisterWithEmailAndPasswordPressed();
   }
@@ -48,6 +54,7 @@ mixin _$SignUpFormEvent {
     @required Result emailChanged(String emailStr),
     @required Result passwordChanged(String passwordStr),
     @required Result usernameChanged(String usernameStr),
+    @required Result agreeChanged(bool isAgree),
     @required Result registerWithEmailAndPasswordPressed(),
     @required Result signInWithGooglePressed(),
   });
@@ -56,6 +63,7 @@ mixin _$SignUpFormEvent {
     Result emailChanged(String emailStr),
     Result passwordChanged(String passwordStr),
     Result usernameChanged(String usernameStr),
+    Result agreeChanged(bool isAgree),
     Result registerWithEmailAndPasswordPressed(),
     Result signInWithGooglePressed(),
     @required Result orElse(),
@@ -65,6 +73,7 @@ mixin _$SignUpFormEvent {
     @required Result emailChanged(EmailChanged value),
     @required Result passwordChanged(PasswordChanged value),
     @required Result usernameChanged(UsernameChanged value),
+    @required Result agreeChanged(AgreeChanged value),
     @required
         Result registerWithEmailAndPasswordPressed(
             RegisterWithEmailAndPasswordPressed value),
@@ -75,6 +84,7 @@ mixin _$SignUpFormEvent {
     Result emailChanged(EmailChanged value),
     Result passwordChanged(PasswordChanged value),
     Result usernameChanged(UsernameChanged value),
+    Result agreeChanged(AgreeChanged value),
     Result registerWithEmailAndPasswordPressed(
         RegisterWithEmailAndPasswordPressed value),
     Result signInWithGooglePressed(SignInWithGooglePressed value),
@@ -158,12 +168,14 @@ class _$EmailChanged implements EmailChanged {
     @required Result emailChanged(String emailStr),
     @required Result passwordChanged(String passwordStr),
     @required Result usernameChanged(String usernameStr),
+    @required Result agreeChanged(bool isAgree),
     @required Result registerWithEmailAndPasswordPressed(),
     @required Result signInWithGooglePressed(),
   }) {
     assert(emailChanged != null);
     assert(passwordChanged != null);
     assert(usernameChanged != null);
+    assert(agreeChanged != null);
     assert(registerWithEmailAndPasswordPressed != null);
     assert(signInWithGooglePressed != null);
     return emailChanged(emailStr);
@@ -175,6 +187,7 @@ class _$EmailChanged implements EmailChanged {
     Result emailChanged(String emailStr),
     Result passwordChanged(String passwordStr),
     Result usernameChanged(String usernameStr),
+    Result agreeChanged(bool isAgree),
     Result registerWithEmailAndPasswordPressed(),
     Result signInWithGooglePressed(),
     @required Result orElse(),
@@ -192,6 +205,7 @@ class _$EmailChanged implements EmailChanged {
     @required Result emailChanged(EmailChanged value),
     @required Result passwordChanged(PasswordChanged value),
     @required Result usernameChanged(UsernameChanged value),
+    @required Result agreeChanged(AgreeChanged value),
     @required
         Result registerWithEmailAndPasswordPressed(
             RegisterWithEmailAndPasswordPressed value),
@@ -200,6 +214,7 @@ class _$EmailChanged implements EmailChanged {
     assert(emailChanged != null);
     assert(passwordChanged != null);
     assert(usernameChanged != null);
+    assert(agreeChanged != null);
     assert(registerWithEmailAndPasswordPressed != null);
     assert(signInWithGooglePressed != null);
     return emailChanged(this);
@@ -211,6 +226,7 @@ class _$EmailChanged implements EmailChanged {
     Result emailChanged(EmailChanged value),
     Result passwordChanged(PasswordChanged value),
     Result usernameChanged(UsernameChanged value),
+    Result agreeChanged(AgreeChanged value),
     Result registerWithEmailAndPasswordPressed(
         RegisterWithEmailAndPasswordPressed value),
     Result signInWithGooglePressed(SignInWithGooglePressed value),
@@ -292,12 +308,14 @@ class _$PasswordChanged implements PasswordChanged {
     @required Result emailChanged(String emailStr),
     @required Result passwordChanged(String passwordStr),
     @required Result usernameChanged(String usernameStr),
+    @required Result agreeChanged(bool isAgree),
     @required Result registerWithEmailAndPasswordPressed(),
     @required Result signInWithGooglePressed(),
   }) {
     assert(emailChanged != null);
     assert(passwordChanged != null);
     assert(usernameChanged != null);
+    assert(agreeChanged != null);
     assert(registerWithEmailAndPasswordPressed != null);
     assert(signInWithGooglePressed != null);
     return passwordChanged(passwordStr);
@@ -309,6 +327,7 @@ class _$PasswordChanged implements PasswordChanged {
     Result emailChanged(String emailStr),
     Result passwordChanged(String passwordStr),
     Result usernameChanged(String usernameStr),
+    Result agreeChanged(bool isAgree),
     Result registerWithEmailAndPasswordPressed(),
     Result signInWithGooglePressed(),
     @required Result orElse(),
@@ -326,6 +345,7 @@ class _$PasswordChanged implements PasswordChanged {
     @required Result emailChanged(EmailChanged value),
     @required Result passwordChanged(PasswordChanged value),
     @required Result usernameChanged(UsernameChanged value),
+    @required Result agreeChanged(AgreeChanged value),
     @required
         Result registerWithEmailAndPasswordPressed(
             RegisterWithEmailAndPasswordPressed value),
@@ -334,6 +354,7 @@ class _$PasswordChanged implements PasswordChanged {
     assert(emailChanged != null);
     assert(passwordChanged != null);
     assert(usernameChanged != null);
+    assert(agreeChanged != null);
     assert(registerWithEmailAndPasswordPressed != null);
     assert(signInWithGooglePressed != null);
     return passwordChanged(this);
@@ -345,6 +366,7 @@ class _$PasswordChanged implements PasswordChanged {
     Result emailChanged(EmailChanged value),
     Result passwordChanged(PasswordChanged value),
     Result usernameChanged(UsernameChanged value),
+    Result agreeChanged(AgreeChanged value),
     Result registerWithEmailAndPasswordPressed(
         RegisterWithEmailAndPasswordPressed value),
     Result signInWithGooglePressed(SignInWithGooglePressed value),
@@ -426,12 +448,14 @@ class _$UsernameChanged implements UsernameChanged {
     @required Result emailChanged(String emailStr),
     @required Result passwordChanged(String passwordStr),
     @required Result usernameChanged(String usernameStr),
+    @required Result agreeChanged(bool isAgree),
     @required Result registerWithEmailAndPasswordPressed(),
     @required Result signInWithGooglePressed(),
   }) {
     assert(emailChanged != null);
     assert(passwordChanged != null);
     assert(usernameChanged != null);
+    assert(agreeChanged != null);
     assert(registerWithEmailAndPasswordPressed != null);
     assert(signInWithGooglePressed != null);
     return usernameChanged(usernameStr);
@@ -443,6 +467,7 @@ class _$UsernameChanged implements UsernameChanged {
     Result emailChanged(String emailStr),
     Result passwordChanged(String passwordStr),
     Result usernameChanged(String usernameStr),
+    Result agreeChanged(bool isAgree),
     Result registerWithEmailAndPasswordPressed(),
     Result signInWithGooglePressed(),
     @required Result orElse(),
@@ -460,6 +485,7 @@ class _$UsernameChanged implements UsernameChanged {
     @required Result emailChanged(EmailChanged value),
     @required Result passwordChanged(PasswordChanged value),
     @required Result usernameChanged(UsernameChanged value),
+    @required Result agreeChanged(AgreeChanged value),
     @required
         Result registerWithEmailAndPasswordPressed(
             RegisterWithEmailAndPasswordPressed value),
@@ -468,6 +494,7 @@ class _$UsernameChanged implements UsernameChanged {
     assert(emailChanged != null);
     assert(passwordChanged != null);
     assert(usernameChanged != null);
+    assert(agreeChanged != null);
     assert(registerWithEmailAndPasswordPressed != null);
     assert(signInWithGooglePressed != null);
     return usernameChanged(this);
@@ -479,6 +506,7 @@ class _$UsernameChanged implements UsernameChanged {
     Result emailChanged(EmailChanged value),
     Result passwordChanged(PasswordChanged value),
     Result usernameChanged(UsernameChanged value),
+    Result agreeChanged(AgreeChanged value),
     Result registerWithEmailAndPasswordPressed(
         RegisterWithEmailAndPasswordPressed value),
     Result signInWithGooglePressed(SignInWithGooglePressed value),
@@ -497,6 +525,145 @@ abstract class UsernameChanged implements SignUpFormEvent {
 
   String get usernameStr;
   $UsernameChangedCopyWith<UsernameChanged> get copyWith;
+}
+
+abstract class $AgreeChangedCopyWith<$Res> {
+  factory $AgreeChangedCopyWith(
+          AgreeChanged value, $Res Function(AgreeChanged) then) =
+      _$AgreeChangedCopyWithImpl<$Res>;
+  $Res call({bool isAgree});
+}
+
+class _$AgreeChangedCopyWithImpl<$Res>
+    extends _$SignUpFormEventCopyWithImpl<$Res>
+    implements $AgreeChangedCopyWith<$Res> {
+  _$AgreeChangedCopyWithImpl(
+      AgreeChanged _value, $Res Function(AgreeChanged) _then)
+      : super(_value, (v) => _then(v as AgreeChanged));
+
+  @override
+  AgreeChanged get _value => super._value as AgreeChanged;
+
+  @override
+  $Res call({
+    Object isAgree = freezed,
+  }) {
+    return _then(AgreeChanged(
+      isAgree == freezed ? _value.isAgree : isAgree as bool,
+    ));
+  }
+}
+
+class _$AgreeChanged implements AgreeChanged {
+  const _$AgreeChanged(this.isAgree) : assert(isAgree != null);
+
+  @override
+  final bool isAgree;
+
+  @override
+  String toString() {
+    return 'SignUpFormEvent.agreeChanged(isAgree: $isAgree)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is AgreeChanged &&
+            (identical(other.isAgree, isAgree) ||
+                const DeepCollectionEquality().equals(other.isAgree, isAgree)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(isAgree);
+
+  @override
+  $AgreeChangedCopyWith<AgreeChanged> get copyWith =>
+      _$AgreeChangedCopyWithImpl<AgreeChanged>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result emailChanged(String emailStr),
+    @required Result passwordChanged(String passwordStr),
+    @required Result usernameChanged(String usernameStr),
+    @required Result agreeChanged(bool isAgree),
+    @required Result registerWithEmailAndPasswordPressed(),
+    @required Result signInWithGooglePressed(),
+  }) {
+    assert(emailChanged != null);
+    assert(passwordChanged != null);
+    assert(usernameChanged != null);
+    assert(agreeChanged != null);
+    assert(registerWithEmailAndPasswordPressed != null);
+    assert(signInWithGooglePressed != null);
+    return agreeChanged(isAgree);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result emailChanged(String emailStr),
+    Result passwordChanged(String passwordStr),
+    Result usernameChanged(String usernameStr),
+    Result agreeChanged(bool isAgree),
+    Result registerWithEmailAndPasswordPressed(),
+    Result signInWithGooglePressed(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (agreeChanged != null) {
+      return agreeChanged(isAgree);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result emailChanged(EmailChanged value),
+    @required Result passwordChanged(PasswordChanged value),
+    @required Result usernameChanged(UsernameChanged value),
+    @required Result agreeChanged(AgreeChanged value),
+    @required
+        Result registerWithEmailAndPasswordPressed(
+            RegisterWithEmailAndPasswordPressed value),
+    @required Result signInWithGooglePressed(SignInWithGooglePressed value),
+  }) {
+    assert(emailChanged != null);
+    assert(passwordChanged != null);
+    assert(usernameChanged != null);
+    assert(agreeChanged != null);
+    assert(registerWithEmailAndPasswordPressed != null);
+    assert(signInWithGooglePressed != null);
+    return agreeChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result emailChanged(EmailChanged value),
+    Result passwordChanged(PasswordChanged value),
+    Result usernameChanged(UsernameChanged value),
+    Result agreeChanged(AgreeChanged value),
+    Result registerWithEmailAndPasswordPressed(
+        RegisterWithEmailAndPasswordPressed value),
+    Result signInWithGooglePressed(SignInWithGooglePressed value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (agreeChanged != null) {
+      return agreeChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AgreeChanged implements SignUpFormEvent {
+  const factory AgreeChanged(bool isAgree) = _$AgreeChanged;
+
+  bool get isAgree;
+  $AgreeChangedCopyWith<AgreeChanged> get copyWith;
 }
 
 abstract class $RegisterWithEmailAndPasswordPressedCopyWith<$Res> {
@@ -543,12 +710,14 @@ class _$RegisterWithEmailAndPasswordPressed
     @required Result emailChanged(String emailStr),
     @required Result passwordChanged(String passwordStr),
     @required Result usernameChanged(String usernameStr),
+    @required Result agreeChanged(bool isAgree),
     @required Result registerWithEmailAndPasswordPressed(),
     @required Result signInWithGooglePressed(),
   }) {
     assert(emailChanged != null);
     assert(passwordChanged != null);
     assert(usernameChanged != null);
+    assert(agreeChanged != null);
     assert(registerWithEmailAndPasswordPressed != null);
     assert(signInWithGooglePressed != null);
     return registerWithEmailAndPasswordPressed();
@@ -560,6 +729,7 @@ class _$RegisterWithEmailAndPasswordPressed
     Result emailChanged(String emailStr),
     Result passwordChanged(String passwordStr),
     Result usernameChanged(String usernameStr),
+    Result agreeChanged(bool isAgree),
     Result registerWithEmailAndPasswordPressed(),
     Result signInWithGooglePressed(),
     @required Result orElse(),
@@ -577,6 +747,7 @@ class _$RegisterWithEmailAndPasswordPressed
     @required Result emailChanged(EmailChanged value),
     @required Result passwordChanged(PasswordChanged value),
     @required Result usernameChanged(UsernameChanged value),
+    @required Result agreeChanged(AgreeChanged value),
     @required
         Result registerWithEmailAndPasswordPressed(
             RegisterWithEmailAndPasswordPressed value),
@@ -585,6 +756,7 @@ class _$RegisterWithEmailAndPasswordPressed
     assert(emailChanged != null);
     assert(passwordChanged != null);
     assert(usernameChanged != null);
+    assert(agreeChanged != null);
     assert(registerWithEmailAndPasswordPressed != null);
     assert(signInWithGooglePressed != null);
     return registerWithEmailAndPasswordPressed(this);
@@ -596,6 +768,7 @@ class _$RegisterWithEmailAndPasswordPressed
     Result emailChanged(EmailChanged value),
     Result passwordChanged(PasswordChanged value),
     Result usernameChanged(UsernameChanged value),
+    Result agreeChanged(AgreeChanged value),
     Result registerWithEmailAndPasswordPressed(
         RegisterWithEmailAndPasswordPressed value),
     Result signInWithGooglePressed(SignInWithGooglePressed value),
@@ -653,12 +826,14 @@ class _$SignInWithGooglePressed implements SignInWithGooglePressed {
     @required Result emailChanged(String emailStr),
     @required Result passwordChanged(String passwordStr),
     @required Result usernameChanged(String usernameStr),
+    @required Result agreeChanged(bool isAgree),
     @required Result registerWithEmailAndPasswordPressed(),
     @required Result signInWithGooglePressed(),
   }) {
     assert(emailChanged != null);
     assert(passwordChanged != null);
     assert(usernameChanged != null);
+    assert(agreeChanged != null);
     assert(registerWithEmailAndPasswordPressed != null);
     assert(signInWithGooglePressed != null);
     return signInWithGooglePressed();
@@ -670,6 +845,7 @@ class _$SignInWithGooglePressed implements SignInWithGooglePressed {
     Result emailChanged(String emailStr),
     Result passwordChanged(String passwordStr),
     Result usernameChanged(String usernameStr),
+    Result agreeChanged(bool isAgree),
     Result registerWithEmailAndPasswordPressed(),
     Result signInWithGooglePressed(),
     @required Result orElse(),
@@ -687,6 +863,7 @@ class _$SignInWithGooglePressed implements SignInWithGooglePressed {
     @required Result emailChanged(EmailChanged value),
     @required Result passwordChanged(PasswordChanged value),
     @required Result usernameChanged(UsernameChanged value),
+    @required Result agreeChanged(AgreeChanged value),
     @required
         Result registerWithEmailAndPasswordPressed(
             RegisterWithEmailAndPasswordPressed value),
@@ -695,6 +872,7 @@ class _$SignInWithGooglePressed implements SignInWithGooglePressed {
     assert(emailChanged != null);
     assert(passwordChanged != null);
     assert(usernameChanged != null);
+    assert(agreeChanged != null);
     assert(registerWithEmailAndPasswordPressed != null);
     assert(signInWithGooglePressed != null);
     return signInWithGooglePressed(this);
@@ -706,6 +884,7 @@ class _$SignInWithGooglePressed implements SignInWithGooglePressed {
     Result emailChanged(EmailChanged value),
     Result passwordChanged(PasswordChanged value),
     Result usernameChanged(UsernameChanged value),
+    Result agreeChanged(AgreeChanged value),
     Result registerWithEmailAndPasswordPressed(
         RegisterWithEmailAndPasswordPressed value),
     Result signInWithGooglePressed(SignInWithGooglePressed value),
@@ -730,6 +909,7 @@ class _$SignUpFormStateTearOff {
       {@required EmailAddress emailAddress,
       @required Password password,
       @required Username username,
+      @required bool isAgree,
       @required bool showErrorMessages,
       @required bool isSubmitting,
       @required Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption}) {
@@ -737,6 +917,7 @@ class _$SignUpFormStateTearOff {
       emailAddress: emailAddress,
       password: password,
       username: username,
+      isAgree: isAgree,
       showErrorMessages: showErrorMessages,
       isSubmitting: isSubmitting,
       authFailureOrSuccessOption: authFailureOrSuccessOption,
@@ -751,6 +932,7 @@ mixin _$SignUpFormState {
   EmailAddress get emailAddress;
   Password get password;
   Username get username;
+  bool get isAgree;
   bool get showErrorMessages;
   bool get isSubmitting;
   Option<Either<AuthFailure, Unit>> get authFailureOrSuccessOption;
@@ -766,6 +948,7 @@ abstract class $SignUpFormStateCopyWith<$Res> {
       {EmailAddress emailAddress,
       Password password,
       Username username,
+      bool isAgree,
       bool showErrorMessages,
       bool isSubmitting,
       Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption});
@@ -784,6 +967,7 @@ class _$SignUpFormStateCopyWithImpl<$Res>
     Object emailAddress = freezed,
     Object password = freezed,
     Object username = freezed,
+    Object isAgree = freezed,
     Object showErrorMessages = freezed,
     Object isSubmitting = freezed,
     Object authFailureOrSuccessOption = freezed,
@@ -794,6 +978,7 @@ class _$SignUpFormStateCopyWithImpl<$Res>
           : emailAddress as EmailAddress,
       password: password == freezed ? _value.password : password as Password,
       username: username == freezed ? _value.username : username as Username,
+      isAgree: isAgree == freezed ? _value.isAgree : isAgree as bool,
       showErrorMessages: showErrorMessages == freezed
           ? _value.showErrorMessages
           : showErrorMessages as bool,
@@ -816,6 +1001,7 @@ abstract class _$SignUpFormStateCopyWith<$Res>
       {EmailAddress emailAddress,
       Password password,
       Username username,
+      bool isAgree,
       bool showErrorMessages,
       bool isSubmitting,
       Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption});
@@ -836,6 +1022,7 @@ class __$SignUpFormStateCopyWithImpl<$Res>
     Object emailAddress = freezed,
     Object password = freezed,
     Object username = freezed,
+    Object isAgree = freezed,
     Object showErrorMessages = freezed,
     Object isSubmitting = freezed,
     Object authFailureOrSuccessOption = freezed,
@@ -846,6 +1033,7 @@ class __$SignUpFormStateCopyWithImpl<$Res>
           : emailAddress as EmailAddress,
       password: password == freezed ? _value.password : password as Password,
       username: username == freezed ? _value.username : username as Username,
+      isAgree: isAgree == freezed ? _value.isAgree : isAgree as bool,
       showErrorMessages: showErrorMessages == freezed
           ? _value.showErrorMessages
           : showErrorMessages as bool,
@@ -863,12 +1051,14 @@ class _$_SignUpFormState implements _SignUpFormState {
       {@required this.emailAddress,
       @required this.password,
       @required this.username,
+      @required this.isAgree,
       @required this.showErrorMessages,
       @required this.isSubmitting,
       @required this.authFailureOrSuccessOption})
       : assert(emailAddress != null),
         assert(password != null),
         assert(username != null),
+        assert(isAgree != null),
         assert(showErrorMessages != null),
         assert(isSubmitting != null),
         assert(authFailureOrSuccessOption != null);
@@ -880,6 +1070,8 @@ class _$_SignUpFormState implements _SignUpFormState {
   @override
   final Username username;
   @override
+  final bool isAgree;
+  @override
   final bool showErrorMessages;
   @override
   final bool isSubmitting;
@@ -888,7 +1080,7 @@ class _$_SignUpFormState implements _SignUpFormState {
 
   @override
   String toString() {
-    return 'SignUpFormState(emailAddress: $emailAddress, password: $password, username: $username, showErrorMessages: $showErrorMessages, isSubmitting: $isSubmitting, authFailureOrSuccessOption: $authFailureOrSuccessOption)';
+    return 'SignUpFormState(emailAddress: $emailAddress, password: $password, username: $username, isAgree: $isAgree, showErrorMessages: $showErrorMessages, isSubmitting: $isSubmitting, authFailureOrSuccessOption: $authFailureOrSuccessOption)';
   }
 
   @override
@@ -904,6 +1096,9 @@ class _$_SignUpFormState implements _SignUpFormState {
             (identical(other.username, username) ||
                 const DeepCollectionEquality()
                     .equals(other.username, username)) &&
+            (identical(other.isAgree, isAgree) ||
+                const DeepCollectionEquality()
+                    .equals(other.isAgree, isAgree)) &&
             (identical(other.showErrorMessages, showErrorMessages) ||
                 const DeepCollectionEquality()
                     .equals(other.showErrorMessages, showErrorMessages)) &&
@@ -923,6 +1118,7 @@ class _$_SignUpFormState implements _SignUpFormState {
       const DeepCollectionEquality().hash(emailAddress) ^
       const DeepCollectionEquality().hash(password) ^
       const DeepCollectionEquality().hash(username) ^
+      const DeepCollectionEquality().hash(isAgree) ^
       const DeepCollectionEquality().hash(showErrorMessages) ^
       const DeepCollectionEquality().hash(isSubmitting) ^
       const DeepCollectionEquality().hash(authFailureOrSuccessOption);
@@ -941,6 +1137,8 @@ abstract class _SignUpFormState implements SignUpFormState {
           @required
               Username username,
           @required
+              bool isAgree,
+          @required
               bool showErrorMessages,
           @required
               bool isSubmitting,
@@ -954,6 +1152,8 @@ abstract class _SignUpFormState implements SignUpFormState {
   Password get password;
   @override
   Username get username;
+  @override
+  bool get isAgree;
   @override
   bool get showErrorMessages;
   @override

@@ -40,17 +40,24 @@ class FirebaseAuthFacade implements IAuthFacade {
     final emailAddressStr = emailAddress.getOrCrash();
     final passwordStr = password.getOrCrash();
     final usernameStr = username.getOrCrash();
-    final userDoc = await _firestore.userDocument();
     try {
       await _firebaseAuth
           .createUserWithEmailAndPassword(
-            email: emailAddressStr,
-            password: passwordStr,
-          )
-          .then((value) => userDoc.setData({
-                "username": usernameStr,
-                "email": emailAddressStr,
-              }));
+        email: emailAddressStr,
+        password: passwordStr,
+      )
+          .then(
+        (value) async {
+          /// Variable to get [USER ID] from firebase [Authentication]
+          final userId = await _firebaseAuth.currentUser();
+
+          /// Store data [USER] into user [COLLECTION]
+          _firestore.collection('users').document(userId.uid).setData({
+            "username": usernameStr,
+            "email": emailAddressStr,
+          });
+        },
+      );
       return right(unit);
     } on PlatformException catch (e) {
       if (e.code == 'ERROR_EMAIL_ALREADY_IN_USE') {

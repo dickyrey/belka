@@ -6,6 +6,7 @@ import 'package:belka/domain/auth/value_objects.dart';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 
 part 'sign_up_form_event.dart';
@@ -13,6 +14,7 @@ part 'sign_up_form_state.dart';
 
 part 'sign_up_form_bloc.freezed.dart';
 
+@injectable
 class SignUpFormBloc extends Bloc<SignUpFormEvent, SignUpFormState> {
   final IAuthFacade _authFacade;
   SignUpFormBloc(this._authFacade);
@@ -25,6 +27,17 @@ class SignUpFormBloc extends Bloc<SignUpFormEvent, SignUpFormState> {
     SignUpFormEvent event,
   ) async* {
     yield* event.map(
+      agreeChanged: (e) async* {
+        if (state.isAgree == false) {
+          yield state.copyWith(
+            isAgree: true,
+          );
+        } else if (state.isAgree == true) {
+          yield state.copyWith(
+            isAgree: false,
+          );
+        }
+      },
       emailChanged: (e) async* {
         yield state.copyWith(
           emailAddress: EmailAddress(e.emailStr),

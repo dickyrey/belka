@@ -7,6 +7,7 @@ abstract class SignUpFormEvent with _$SignUpFormEvent {
       PasswordChanged;
   const factory SignUpFormEvent.usernameChanged(String usernameStr) =
       UsernameChanged;
+  const factory SignUpFormEvent.agreeChanged(bool isAgree) = AgreeChanged;
 
   const factory SignUpFormEvent.registerWithEmailAndPasswordPressed() =
       RegisterWithEmailAndPasswordPressed;

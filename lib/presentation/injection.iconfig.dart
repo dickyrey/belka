@@ -17,6 +17,7 @@ import 'package:belka/application/products/product_actor/product_actor_bloc.dart
 import 'package:belka/application/products/product_form/product_form_bloc.dart';
 import 'package:belka/application/products/product_watcher/product_watcher_bloc.dart';
 import 'package:belka/application/auth/sign_in_form/sign_in_form_bloc.dart';
+import 'package:belka/application/auth/sign_up_form/sign_up_form_bloc.dart';
 import 'package:belka/application/auth/auth_bloc.dart';
 import 'package:get_it/get_it.dart';
 
@@ -41,6 +42,7 @@ void $initGetIt(GetIt g, {String environment}) {
   g.registerFactory<ProductWatcherBloc>(
       () => ProductWatcherBloc(g<IProductRepository>()));
   g.registerFactory<SignInFormBloc>(() => SignInFormBloc(g<IAuthFacade>()));
+  g.registerFactory<SignUpFormBloc>(() => SignUpFormBloc(g<IAuthFacade>()));
   g.registerFactory<AuthBloc>(() => AuthBloc(g<IAuthFacade>()));
 
   //Register prod Dependencies --------

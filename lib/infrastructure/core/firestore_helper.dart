@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../domain/auth/i_auth_facade.dart';
 import '../../domain/core/errors.dart';
@@ -17,6 +18,5 @@ extension FirestoreX on Firestore {
 }
 
 extension DocumentReferenceX on DocumentReference {
-  CollectionReference get userCollection => collection('users');
   CollectionReference get productCollection => collection('products');
 }

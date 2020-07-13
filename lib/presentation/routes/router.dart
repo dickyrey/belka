@@ -11,7 +11,7 @@ import '../page/splash/splash_page.dart';
   routes: <AutoRoute>[
     MaterialRoute(page: SplashPage, initial: true),
     MaterialRoute(page: SignInPage),
-    MaterialRoute(page: SignUpPage, fullscreenDialog: true),
+    MaterialRoute(page: SignUpPage),
     MaterialRoute(page: HomePage),
     MaterialRoute(page: ProductFormPage, fullscreenDialog: true),
   ],
