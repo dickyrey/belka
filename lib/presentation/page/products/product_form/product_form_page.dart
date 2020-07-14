@@ -1,18 +1,22 @@
 import 'package:auto_route/auto_route.dart';
-import '../../../../application/products/product_form/product_form_bloc.dart';
-import '../../../../domain/products/product.dart';
-import '../../../injection.dart';
-import 'package:belka/presentation/page/products/product_form/widgets/name_field_widget.dart';
-import 'package:belka/presentation/routes/router.gr.dart';
 import 'package:dartz/dartz.dart';
-import 'package:flushbar/flushbar.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../application/products/product_form/product_form_bloc.dart';
+import '../../../../domain/products/product.dart';
+import '../../../injection.dart';
+import '../../../routes/router.gr.dart';
 import 'misc/image_item_presentation_classes.dart';
+import 'widgets/description_field_widget.dart';
+import 'widgets/in_publish_switch_widget.dart';
+import 'widgets/in_stock_switch_widget.dart';
+import 'widgets/name_field_widget.dart';
+import 'widgets/price_field_widget.dart';
+import 'widgets/total_sale_field_widget.dart';
 
 class ProductFormPage extends HookWidget {
   final Product product;
@@ -152,7 +156,13 @@ class ProductFormPageScaffold extends StatelessWidget {
               autovalidate: state.showErrorMessages,
               child: const CustomScrollView(
                 slivers: <Widget>[
+                  // Todo: Create form for input product data
                   SliverToBoxAdapter(child: NameField()),
+                  SliverToBoxAdapter(child: DescriptionField()),
+                  SliverToBoxAdapter(child: InPublishSwitch()),
+                  SliverToBoxAdapter(child: InStockSwitch()),
+                  SliverToBoxAdapter(child: PriceField()),
+                  // SliverToBoxAdapter(child: TotalSaleField()),
                 ],
               ),
             ),

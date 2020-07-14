@@ -5,8 +5,8 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
-class NameField extends HookWidget {
-  const NameField({
+class DescriptionField extends HookWidget {
+  const DescriptionField({
     Key key,
   }) : super(key: key);
 
@@ -18,29 +18,32 @@ class NameField extends HookWidget {
       listenWhen: (p, c) => p.isEditing != c.isEditing,
       listener: (context, state) {
         // In case of an initial data failure... We can't get to this point though.
-        textEditingController.text = state.product.productName.getOrCrash();
+        textEditingController.text =
+            state.product.productDescription.getOrCrash();
       },
-      buildWhen: (p, c) => p.product.productName != c.product.productName,
+      buildWhen: (p, c) =>
+          p.product.productDescription != c.product.productDescription,
       builder: (context, state) {
         return Padding(
           padding: const EdgeInsets.all(10),
           child: TextFormField(
             controller: textEditingController,
             decoration: const InputDecoration(
-              labelText: 'Name product',
+              labelText: 'Description product',
               counterText: '',
             ),
-            maxLength: ProductName.maxLength,
+            maxLength: ProductDescription.maxLength,
             maxLengthEnforced: true,
             maxLines: null,
+            minLines: 5,
             onChanged: (value) => context
                 .bloc<ProductFormBloc>()
-                .add(ProductFormEvent.productNameChanged(value)),
+                .add(ProductFormEvent.productDescriptionChanged(value)),
             validator: (_) => context
                 .bloc<ProductFormBloc>()
                 .state
                 .product
-                .productName
+                .productDescription
                 .value
                 .fold(
                   (f) => f.maybeMap(

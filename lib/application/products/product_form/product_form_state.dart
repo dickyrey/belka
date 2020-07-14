@@ -7,6 +7,8 @@ abstract class ProductFormState with _$ProductFormState {
     @required bool showErrorMessages,
     @required bool isEditing,
     @required bool isSaving,
+    @required bool isPublish,
+    @required bool isStock,
     @required Option<Either<ProductFailure, Unit>> saveFailureOrSuccessOption,
   }) = _ProductFormState;
 
@@ -15,6 +17,8 @@ abstract class ProductFormState with _$ProductFormState {
         showErrorMessages: false,
         isEditing: false,
         isSaving: false,
+        isPublish: false,
+        isStock: false,
         saveFailureOrSuccessOption: none(),
       );
 }

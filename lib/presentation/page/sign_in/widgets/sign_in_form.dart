@@ -14,7 +14,7 @@ class SignInForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final RoundedLoadingButtonController _btnController =
-        new RoundedLoadingButtonController();
+        RoundedLoadingButtonController();
     return BlocConsumer<SignInFormBloc, SignInFormState>(
       listener: (context, state) {
         state.authFailureOrSuccessOption.fold(
@@ -145,7 +145,8 @@ class SignInForm extends StatelessWidget {
                     alignment: Alignment.centerRight,
                     child: GestureDetector(
                       onTap: () {
-                        //Todo: Navigate to Forgot Password UI
+                        ExtendedNavigator.of(context)
+                            .pushNamed(Routes.resetPasswordPage);
                       },
                       child: const Text(
                         "Lupa password?",
@@ -165,6 +166,8 @@ class SignInForm extends StatelessWidget {
                     color: kRedColor,
                     controller: _btnController,
                     onPressed: () {
+                      /// [Navigate to Home Screen]
+                      /// When user is authenticated
                       if (state.isSubmitting == true) {
                         context.bloc<SignInFormBloc>().add(const SignInFormEvent
                             .signInWithEmailAndPasswordPressed());
@@ -186,34 +189,6 @@ class SignInForm extends StatelessWidget {
                       ),
                     ),
                   ),
-                  // SizedBox(
-                  //   width: double.infinity,
-                  //   height: 50.0,
-                  //   child: RaisedButton(
-                  //     onPressed: () {
-                  //       context.bloc<SignInFormBloc>().add(const SignInFormEvent
-                  //           .signInWithEmailAndPasswordPressed());
-                  //       //Todo: Register function
-                  //       /*
-                  //       context.bloc<SignInFormBloc>().add(const SignInFormEvent
-                  //       .registerWithEmailAndPasswordPressed());
-                  //       */
-                  //     },
-                  //     shape: RoundedRectangleBorder(
-                  //       borderRadius: BorderRadius.circular(15.0),
-                  //     ),
-                  //     child: const Text(
-                  //       "LOGIN",
-                  //       textAlign: TextAlign.center,
-                  //       style: TextStyle(
-                  //         fontSize: 15.0,
-                  //         color: Colors.white,
-                  //         fontWeight: FontWeight.bold,
-                  //         letterSpacing: 2.0,
-                  //       ),
-                  //     ),
-                  //   ),
-                  // ),
 
                   /// [Button] for navigate to [SIGN UP] UI.
                   const SizedBox(height: 15.0),

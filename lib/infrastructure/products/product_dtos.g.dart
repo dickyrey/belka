@@ -8,17 +8,25 @@ part of 'product_dtos.dart';
 
 _$_ProductDto _$_$_ProductDtoFromJson(Map<String, dynamic> json) {
   return _$_ProductDto(
-    name: json['name'] as String,
-    serverTimeStamp:
-        const ServerTimestampConverter().fromJson(json['serverTimeStamp']),
+    productName: json['productName'] as String,
+    productDescription: json['productDescription'] as String,
+    productInPublish: json['productInPublish'] as bool,
+    productInStock: json['productInStock'] as bool,
+    productPrice: json['productPrice'] as int,
+    productTotalSales: json['productTotalSales'] as int,
+    createdAt: const ServerTimestampConverter().fromJson(json['createdAt']),
   );
 }
 
 Map<String, dynamic> _$_$_ProductDtoToJson(_$_ProductDto instance) =>
     <String, dynamic>{
-      'name': instance.name,
-      'serverTimeStamp':
-          const ServerTimestampConverter().toJson(instance.serverTimeStamp),
+      'productName': instance.productName,
+      'productDescription': instance.productDescription,
+      'productInPublish': instance.productInPublish,
+      'productInStock': instance.productInStock,
+      'productPrice': instance.productPrice,
+      'productTotalSales': instance.productTotalSales,
+      'createdAt': const ServerTimestampConverter().toJson(instance.createdAt),
     };
 
 _$_ImageItemDto _$_$_ImageItemDtoFromJson(Map<String, dynamic> json) {

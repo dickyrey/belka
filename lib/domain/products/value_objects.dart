@@ -37,13 +37,28 @@ class ProductDescription extends ValueObject<String> {
   const ProductDescription._(this.value);
 }
 
-class ProductPrice extends ValueObject<double> {
+class ProductInPublish extends ValueObject<String> {
   @override
-  final Either<ValueFailure<double>, double> value;
+  final Either<ValueFailure<String>, String> value;
 
-  factory ProductPrice(double input) {
+  static const maxLength = 6;
+
+  factory ProductInPublish(String input) {
     assert(input != null);
-    return ProductPrice._(validateDoubleNotEmpty(input));
+    return ProductInPublish._(
+      validateStringNotEmpty(input),
+    );
+  }
+  const ProductInPublish._(this.value);
+}
+
+class ProductPrice extends ValueObject<int> {
+  @override
+  final Either<ValueFailure<int>, int> value;
+
+  factory ProductPrice(int input) {
+    assert(input != null);
+    return ProductPrice._(validateIntNotEmpty(input));
   }
   const ProductPrice._(this.value);
 }
@@ -68,57 +83,6 @@ class ProductTotalSales extends ValueObject<int> {
     return ProductTotalSales._(validateIntNotEmpty(input));
   }
   const ProductTotalSales._(this.value);
-}
-
-class ProductInPublish extends ValueObject<String> {
-  @override
-  final Either<ValueFailure<String>, String> value;
-  static const List<String> predefinedProductInPublish = [
-    "true",
-    "false",
-  ];
-  factory ProductInPublish(String input) {
-    assert(input != null);
-    return ProductInPublish._(
-      right(input),
-    );
-  }
-  const ProductInPublish._(this.value);
-}
-
-class ProductInStock extends ValueObject<String> {
-  @override
-  final Either<ValueFailure<String>, String> value;
-  static const List<String> predefinedProductInStock = [
-    "true",
-    "false",
-  ];
-  factory ProductInStock(String input) {
-    assert(input != null);
-    return ProductInStock._(
-      right(input),
-    );
-  }
-  const ProductInStock._(this.value);
-}
-
-class ProductOnSale extends ValueObject<String> {
-  static const List<String> predefinedProductOnSale = [
-    "true",
-    "false",
-  ];
-
-  @override
-  final Either<ValueFailure<String>, String> value;
-
-  factory ProductOnSale(String input) {
-    assert(input != null);
-    return ProductOnSale._(
-      right(input),
-    );
-  }
-
-  const ProductOnSale._(this.value);
 }
 
 class ImageName extends ValueObject<String> {

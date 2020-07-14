@@ -286,6 +286,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.8.0+1"
+  flutter_money_formatter:
+    dependency: transitive
+    description:
+      name: flutter_money_formatter
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.8.3"
   flutter_web_plugins:
     dependency: transitive
     description: flutter
@@ -402,7 +409,7 @@ packages:
       name: intl
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.16.1"
+    version: "0.15.8"
   io:
     dependency: transitive
     description:
@@ -473,6 +480,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.9.6+3"
+  moneytextformfield:
+    dependency: "direct main"
+    description:
+      name: moneytextformfield
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.3.5+1"
   nested:
     dependency: transitive
     description:

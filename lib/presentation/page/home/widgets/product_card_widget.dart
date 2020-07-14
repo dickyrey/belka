@@ -36,7 +36,7 @@ class ProductCard extends StatelessWidget {
                 child: AlertDialog(
                   title: const Text('Selected note:'),
                   content: Text(
-                    product.name.getOrCrash(),
+                    product.productName.getOrCrash(),
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
                   ),
@@ -65,7 +65,7 @@ class ProductCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Text(
-                product.name.getOrCrash(),
+                product.productName.getOrCrash(),
                 style: const TextStyle(fontSize: 18),
               ),
               // if (note.todos.length > 0) ...[

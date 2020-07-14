@@ -10,6 +10,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:belka/presentation/page/splash/splash_page.dart';
 import 'package:belka/presentation/page/sign_in/sign_in_page.dart';
 import 'package:belka/presentation/page/sign_up/sign_up_page.dart';
+import 'package:belka/presentation/page/forgot_password/reset_password.dart';
 import 'package:belka/presentation/page/home/home_page.dart';
 import 'package:belka/presentation/page/products/product_form/product_form_page.dart';
 import 'package:belka/domain/products/product.dart';
@@ -18,12 +19,14 @@ class Routes {
   static const String splashPage = '/';
   static const String signInPage = '/sign-in-page';
   static const String signUpPage = '/sign-up-page';
+  static const String resetPasswordPage = '/reset-password-page';
   static const String homePage = '/home-page';
   static const String productFormPage = '/product-form-page';
   static const all = <String>{
     splashPage,
     signInPage,
     signUpPage,
+    resetPasswordPage,
     homePage,
     productFormPage,
   };
@@ -36,6 +39,7 @@ class Router extends RouterBase {
     RouteDef(Routes.splashPage, page: SplashPage),
     RouteDef(Routes.signInPage, page: SignInPage),
     RouteDef(Routes.signUpPage, page: SignUpPage),
+    RouteDef(Routes.resetPasswordPage, page: ResetPasswordPage),
     RouteDef(Routes.homePage, page: HomePage),
     RouteDef(Routes.productFormPage, page: ProductFormPage),
   ];
@@ -57,6 +61,12 @@ class Router extends RouterBase {
     SignUpPage: (RouteData data) {
       return MaterialPageRoute<dynamic>(
         builder: (context) => SignUpPage(),
+        settings: data,
+      );
+    },
+    ResetPasswordPage: (RouteData data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => ResetPasswordPage(),
         settings: data,
       );
     },
@@ -88,6 +98,9 @@ extension RouterNavigationHelperMethods on ExtendedNavigatorState {
   Future<dynamic> pushSignInPage() => pushNamed<dynamic>(Routes.signInPage);
 
   Future<dynamic> pushSignUpPage() => pushNamed<dynamic>(Routes.signUpPage);
+
+  Future<dynamic> pushResetPasswordPage() =>
+      pushNamed<dynamic>(Routes.resetPasswordPage);
 
   Future<dynamic> pushHomePage() => pushNamed<dynamic>(Routes.homePage);
 

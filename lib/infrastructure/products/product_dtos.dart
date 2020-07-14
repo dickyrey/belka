@@ -1,10 +1,10 @@
-import 'package:belka/domain/core/value_objects.dart';
-import 'package:belka/domain/products/image_item.dart';
-import 'package:belka/domain/products/product.dart';
-import 'package:belka/domain/products/value_objects.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:kt_dart/kt.dart';
+
+import '../../domain/core/value_objects.dart';
+import '../../domain/products/image_item.dart';
+import '../../domain/products/product.dart';
+import '../../domain/products/value_objects.dart';
 
 part 'product_dtos.freezed.dart';
 part 'product_dtos.g.dart';
@@ -14,15 +14,25 @@ abstract class ProductDto implements _$ProductDto {
   // const ProductDto._();
   const factory ProductDto({
     @JsonKey(ignore: true) String id,
-    @required String name,
-    @required @ServerTimestampConverter() FieldValue serverTimeStamp,
+    @required String productName,
+    @required String productDescription,
+    @required bool productInPublish,
+    @required bool productInStock,
+    @required int productPrice,
+    @required int productTotalSales,
+    @required @ServerTimestampConverter() FieldValue createdAt,
   }) = _ProductDto;
 
   factory ProductDto.fromDomain(Product product) {
     return ProductDto(
       id: product.id.getOrCrash(),
-      name: product.name.getOrCrash(),
-      serverTimeStamp: FieldValue.serverTimestamp(),
+      productName: product.productName.getOrCrash(),
+      productDescription: product.productDescription.getOrCrash(),
+      productInPublish: product.productInPublish,
+      productInStock: product.productInStock,
+      productPrice: product.productPrice.getOrCrash(),
+      productTotalSales: 0,
+      createdAt: FieldValue.serverTimestamp(),
     );
   }
 
@@ -51,7 +61,11 @@ extension ProductDtoX on ProductDto {
   Product toDomain() {
     return Product(
       id: UniqueId.fromUniqueString(id),
-      name: ProductName(name),
+      productName: ProductName(productName),
+      productDescription: ProductDescription(productDescription),
+      productInPublish: false,
+      productInStock: false,
+      productPrice: ProductPrice(productPrice),
     );
   }
 }

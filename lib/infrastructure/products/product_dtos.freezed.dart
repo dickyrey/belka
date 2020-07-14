@@ -17,12 +17,22 @@ class _$ProductDtoTearOff {
 
   _ProductDto call(
       {@JsonKey(ignore: true) String id,
-      @required String name,
-      @required @ServerTimestampConverter() FieldValue serverTimeStamp}) {
+      @required String productName,
+      @required String productDescription,
+      @required bool productInPublish,
+      @required bool productInStock,
+      @required int productPrice,
+      @required int productTotalSales,
+      @required @ServerTimestampConverter() FieldValue createdAt}) {
     return _ProductDto(
       id: id,
-      name: name,
-      serverTimeStamp: serverTimeStamp,
+      productName: productName,
+      productDescription: productDescription,
+      productInPublish: productInPublish,
+      productInStock: productInStock,
+      productPrice: productPrice,
+      productTotalSales: productTotalSales,
+      createdAt: createdAt,
     );
   }
 }
@@ -33,9 +43,14 @@ const $ProductDto = _$ProductDtoTearOff();
 mixin _$ProductDto {
   @JsonKey(ignore: true)
   String get id;
-  String get name;
+  String get productName;
+  String get productDescription;
+  bool get productInPublish;
+  bool get productInStock;
+  int get productPrice;
+  int get productTotalSales;
   @ServerTimestampConverter()
-  FieldValue get serverTimeStamp;
+  FieldValue get createdAt;
 
   Map<String, dynamic> toJson();
   $ProductDtoCopyWith<ProductDto> get copyWith;
@@ -47,8 +62,13 @@ abstract class $ProductDtoCopyWith<$Res> {
       _$ProductDtoCopyWithImpl<$Res>;
   $Res call(
       {@JsonKey(ignore: true) String id,
-      String name,
-      @ServerTimestampConverter() FieldValue serverTimeStamp});
+      String productName,
+      String productDescription,
+      bool productInPublish,
+      bool productInStock,
+      int productPrice,
+      int productTotalSales,
+      @ServerTimestampConverter() FieldValue createdAt});
 }
 
 class _$ProductDtoCopyWithImpl<$Res> implements $ProductDtoCopyWith<$Res> {
@@ -61,15 +81,34 @@ class _$ProductDtoCopyWithImpl<$Res> implements $ProductDtoCopyWith<$Res> {
   @override
   $Res call({
     Object id = freezed,
-    Object name = freezed,
-    Object serverTimeStamp = freezed,
+    Object productName = freezed,
+    Object productDescription = freezed,
+    Object productInPublish = freezed,
+    Object productInStock = freezed,
+    Object productPrice = freezed,
+    Object productTotalSales = freezed,
+    Object createdAt = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed ? _value.id : id as String,
-      name: name == freezed ? _value.name : name as String,
-      serverTimeStamp: serverTimeStamp == freezed
-          ? _value.serverTimeStamp
-          : serverTimeStamp as FieldValue,
+      productName:
+          productName == freezed ? _value.productName : productName as String,
+      productDescription: productDescription == freezed
+          ? _value.productDescription
+          : productDescription as String,
+      productInPublish: productInPublish == freezed
+          ? _value.productInPublish
+          : productInPublish as bool,
+      productInStock: productInStock == freezed
+          ? _value.productInStock
+          : productInStock as bool,
+      productPrice:
+          productPrice == freezed ? _value.productPrice : productPrice as int,
+      productTotalSales: productTotalSales == freezed
+          ? _value.productTotalSales
+          : productTotalSales as int,
+      createdAt:
+          createdAt == freezed ? _value.createdAt : createdAt as FieldValue,
     ));
   }
 }
@@ -81,8 +120,13 @@ abstract class _$ProductDtoCopyWith<$Res> implements $ProductDtoCopyWith<$Res> {
   @override
   $Res call(
       {@JsonKey(ignore: true) String id,
-      String name,
-      @ServerTimestampConverter() FieldValue serverTimeStamp});
+      String productName,
+      String productDescription,
+      bool productInPublish,
+      bool productInStock,
+      int productPrice,
+      int productTotalSales,
+      @ServerTimestampConverter() FieldValue createdAt});
 }
 
 class __$ProductDtoCopyWithImpl<$Res> extends _$ProductDtoCopyWithImpl<$Res>
@@ -97,15 +141,34 @@ class __$ProductDtoCopyWithImpl<$Res> extends _$ProductDtoCopyWithImpl<$Res>
   @override
   $Res call({
     Object id = freezed,
-    Object name = freezed,
-    Object serverTimeStamp = freezed,
+    Object productName = freezed,
+    Object productDescription = freezed,
+    Object productInPublish = freezed,
+    Object productInStock = freezed,
+    Object productPrice = freezed,
+    Object productTotalSales = freezed,
+    Object createdAt = freezed,
   }) {
     return _then(_ProductDto(
       id: id == freezed ? _value.id : id as String,
-      name: name == freezed ? _value.name : name as String,
-      serverTimeStamp: serverTimeStamp == freezed
-          ? _value.serverTimeStamp
-          : serverTimeStamp as FieldValue,
+      productName:
+          productName == freezed ? _value.productName : productName as String,
+      productDescription: productDescription == freezed
+          ? _value.productDescription
+          : productDescription as String,
+      productInPublish: productInPublish == freezed
+          ? _value.productInPublish
+          : productInPublish as bool,
+      productInStock: productInStock == freezed
+          ? _value.productInStock
+          : productInStock as bool,
+      productPrice:
+          productPrice == freezed ? _value.productPrice : productPrice as int,
+      productTotalSales: productTotalSales == freezed
+          ? _value.productTotalSales
+          : productTotalSales as int,
+      createdAt:
+          createdAt == freezed ? _value.createdAt : createdAt as FieldValue,
     ));
   }
 }
@@ -114,10 +177,20 @@ class __$ProductDtoCopyWithImpl<$Res> extends _$ProductDtoCopyWithImpl<$Res>
 class _$_ProductDto implements _ProductDto {
   const _$_ProductDto(
       {@JsonKey(ignore: true) this.id,
-      @required this.name,
-      @required @ServerTimestampConverter() this.serverTimeStamp})
-      : assert(name != null),
-        assert(serverTimeStamp != null);
+      @required this.productName,
+      @required this.productDescription,
+      @required this.productInPublish,
+      @required this.productInStock,
+      @required this.productPrice,
+      @required this.productTotalSales,
+      @required @ServerTimestampConverter() this.createdAt})
+      : assert(productName != null),
+        assert(productDescription != null),
+        assert(productInPublish != null),
+        assert(productInStock != null),
+        assert(productPrice != null),
+        assert(productTotalSales != null),
+        assert(createdAt != null);
 
   factory _$_ProductDto.fromJson(Map<String, dynamic> json) =>
       _$_$_ProductDtoFromJson(json);
@@ -126,14 +199,24 @@ class _$_ProductDto implements _ProductDto {
   @JsonKey(ignore: true)
   final String id;
   @override
-  final String name;
+  final String productName;
+  @override
+  final String productDescription;
+  @override
+  final bool productInPublish;
+  @override
+  final bool productInStock;
+  @override
+  final int productPrice;
+  @override
+  final int productTotalSales;
   @override
   @ServerTimestampConverter()
-  final FieldValue serverTimeStamp;
+  final FieldValue createdAt;
 
   @override
   String toString() {
-    return 'ProductDto(id: $id, name: $name, serverTimeStamp: $serverTimeStamp)';
+    return 'ProductDto(id: $id, productName: $productName, productDescription: $productDescription, productInPublish: $productInPublish, productInStock: $productInStock, productPrice: $productPrice, productTotalSales: $productTotalSales, createdAt: $createdAt)';
   }
 
   @override
@@ -142,19 +225,40 @@ class _$_ProductDto implements _ProductDto {
         (other is _ProductDto &&
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.serverTimeStamp, serverTimeStamp) ||
+            (identical(other.productName, productName) ||
                 const DeepCollectionEquality()
-                    .equals(other.serverTimeStamp, serverTimeStamp)));
+                    .equals(other.productName, productName)) &&
+            (identical(other.productDescription, productDescription) ||
+                const DeepCollectionEquality()
+                    .equals(other.productDescription, productDescription)) &&
+            (identical(other.productInPublish, productInPublish) ||
+                const DeepCollectionEquality()
+                    .equals(other.productInPublish, productInPublish)) &&
+            (identical(other.productInStock, productInStock) ||
+                const DeepCollectionEquality()
+                    .equals(other.productInStock, productInStock)) &&
+            (identical(other.productPrice, productPrice) ||
+                const DeepCollectionEquality()
+                    .equals(other.productPrice, productPrice)) &&
+            (identical(other.productTotalSales, productTotalSales) ||
+                const DeepCollectionEquality()
+                    .equals(other.productTotalSales, productTotalSales)) &&
+            (identical(other.createdAt, createdAt) ||
+                const DeepCollectionEquality()
+                    .equals(other.createdAt, createdAt)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(serverTimeStamp);
+      const DeepCollectionEquality().hash(productName) ^
+      const DeepCollectionEquality().hash(productDescription) ^
+      const DeepCollectionEquality().hash(productInPublish) ^
+      const DeepCollectionEquality().hash(productInStock) ^
+      const DeepCollectionEquality().hash(productPrice) ^
+      const DeepCollectionEquality().hash(productTotalSales) ^
+      const DeepCollectionEquality().hash(createdAt);
 
   @override
   _$ProductDtoCopyWith<_ProductDto> get copyWith =>
@@ -169,8 +273,13 @@ class _$_ProductDto implements _ProductDto {
 abstract class _ProductDto implements ProductDto {
   const factory _ProductDto(
           {@JsonKey(ignore: true) String id,
-          @required String name,
-          @required @ServerTimestampConverter() FieldValue serverTimeStamp}) =
+          @required String productName,
+          @required String productDescription,
+          @required bool productInPublish,
+          @required bool productInStock,
+          @required int productPrice,
+          @required int productTotalSales,
+          @required @ServerTimestampConverter() FieldValue createdAt}) =
       _$_ProductDto;
 
   factory _ProductDto.fromJson(Map<String, dynamic> json) =
@@ -180,10 +289,20 @@ abstract class _ProductDto implements ProductDto {
   @JsonKey(ignore: true)
   String get id;
   @override
-  String get name;
+  String get productName;
+  @override
+  String get productDescription;
+  @override
+  bool get productInPublish;
+  @override
+  bool get productInStock;
+  @override
+  int get productPrice;
+  @override
+  int get productTotalSales;
   @override
   @ServerTimestampConverter()
-  FieldValue get serverTimeStamp;
+  FieldValue get createdAt;
   @override
   _$ProductDtoCopyWith<_ProductDto> get copyWith;
 }

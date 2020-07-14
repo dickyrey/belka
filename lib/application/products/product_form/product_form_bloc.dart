@@ -40,9 +40,61 @@ class ProductFormBloc extends Bloc<ProductFormEvent, ProductFormState> {
           ),
         );
       },
-      nameChanged: (e) async* {
+      productNameChanged: (e) async* {
         yield state.copyWith(
-          product: state.product.copyWith(name: ProductName(e.nameStr)),
+          product: state.product.copyWith(
+            productName: ProductName(e.productNameStr),
+          ),
+          saveFailureOrSuccessOption: none(),
+        );
+      },
+      productDescriptionChanged: (e) async* {
+        yield state.copyWith(
+          product: state.product.copyWith(
+            productDescription: ProductDescription(e.productDescriptionStr),
+          ),
+          saveFailureOrSuccessOption: none(),
+        );
+      },
+      productInPublishChanged: (e) async* {
+        if (state.isPublish == false) {
+          yield state.copyWith(
+            product: state.product.copyWith(
+              productInPublish: true,
+            ),
+            saveFailureOrSuccessOption: none(),
+            isPublish: true,
+          );
+        } else {
+          yield state.copyWith(
+            product: state.product.copyWith(productInPublish: false),
+            saveFailureOrSuccessOption: none(),
+            isPublish: false,
+          );
+        }
+      },
+      productInStockChanged: (e) async* {
+        if (state.isStock == false) {
+          yield state.copyWith(
+            product: state.product.copyWith(
+              productInStock: true,
+            ),
+            saveFailureOrSuccessOption: none(),
+            isStock: true,
+          );
+        } else {
+          yield state.copyWith(
+            product: state.product.copyWith(productInStock: false),
+            saveFailureOrSuccessOption: none(),
+            isStock: false,
+          );
+        }
+      },
+      productPriceChanged: (e) async* {
+        yield state.copyWith(
+          product: state.product.copyWith(
+            productPrice: ProductPrice(e.productPriceInt),
+          ),
           saveFailureOrSuccessOption: none(),
         );
       },

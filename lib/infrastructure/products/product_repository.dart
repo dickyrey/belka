@@ -22,7 +22,7 @@ class ProductRepository implements IProductRepository {
   Stream<Either<ProductFailure, KtList<Product>>> watchAllMyProduct() async* {
     final userDoc = await _firestore.userDocument();
     yield* userDoc.productCollection
-        .orderBy('serverTimeStamp', descending: true)
+        .orderBy('createdAt', descending: true)
         .snapshots()
         .map(
           (snapshot) => right<ProductFailure, KtList<Product>>(
